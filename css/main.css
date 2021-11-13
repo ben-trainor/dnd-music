@@ -92,3 +92,28 @@ h1, h2, h3, h4, h5, h6 {
 .form-check-input:focus:not(:checked) {
     border-color: lightgrey;
 }
+
+
+/* Buttons */
+
+    /* Music buttons */
+
+    /* button.music-button {
+        background-color: #fad083;
+        color: white;
+        border: 1px solid #c09b56;
+        width: 100px;
+        height: 60px;
+        list-style-type: none;
+    }
+
+    button.music-button:active {
+        background-color: #c09b56;
+        color: white;
+        border: 2px solid #c09b56;
+        width: 100px;
+        height: 60px;
+    } */
+
+/* Header menu */
+
