@@ -1,9 +1,94 @@
 
-@font-face {
+/* @font-face {
     font-family: "Raleway";
     src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Podkova:wght@400;500;600;700;800&display=swap');
+html, body, head {
+    font-family: "Outfit";
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Podkova";
 }
 
-html {
-    font-family: "Raleway";
+/* 
+
+    Colors 
+
+    Primary (main): #AADEF3
+    Primary-dark (main-dark): #6DA1B6
+    Secondary (second): #fad083
+    Secondary-dark (second-dark): #B6A96D
+
+*/
+
+    /* Background colors */
+
+    .bg-main {
+        background-color: #AADEF3;
+    }
+    .bg-main-dark {
+        background-color: #6DA1B6;
+    }
+    .bg-second {
+        background-color: #fad083;
+    }
+    .bg-second-dark {
+        background-color: #c09b56;
+    }
+
+    /* Text colors */
+
+    .text-main {
+        color: #AADEF3;
+    }
+    .text-main-dark {
+        color: #6DA1B6;
+    }
+    .text-second {
+        color: #fad083;
+    }
+    .text-second-dark {
+        color: #c09b56;
+    }
+
+    /* Text-shadow colors */
+
+    .text-sh-dark {
+        text-shadow: 2px 2px 0px #202020;
+    }
+    .text-sh-main {
+        text-shadow: 2px 2px 0px #AADEF3;
+    }
+    .text-sh-main-dark {
+        text-shadow: 2px 2px 0px #6DA1B6;
+    }
+    .text-sh-second {
+        text-shadow: 2px 2px 0px #fad083;
+    }
+    .text-sh-second-dark {
+        text-shadow: 2px 2px 0px #c09b56;
+    }
+
+
+.audio-container {
+    max-height: 100vh;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+/* Switch colors */
+
+.form-check-input:focus {
+    box-shadow: 0px 0px 4px 1px rgba(248, 187, 73, 0.534);
+}
+
+.form-check-input:checked, .form-check-input:active {
+    background-color: #fad083;
+    border-color: #c09b56;
+}
+
+.form-check-input:focus:not(:checked) {
+    border-color: lightgrey;
 }
