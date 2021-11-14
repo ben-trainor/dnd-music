@@ -11,69 +11,90 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="css/main.css" />
         <script src="node_modules/howler/dist/howler.js"></script>
-
         <script>
 
-            /*
-
-                Get buttons with class music-button
-                Set onlick function to musicLogic()
-                    musicLogic() plays particular sound
-
-            */
-
-            
             window.onload = function() { // Have to wait for page to load before running anything
 
 
                 // Initialize song objects and store them in the parent object
-                var howlerObjectsHolder = {};
-                var holderIndex = 0;
-                var pizza = new Howl({
-                    src: ['../audio/music/1 in the end, we all became pizza and ate ourselves.mp3'],
-                    name: "pizza"
-                }); howlerObjectsHolder[holderIndex++] = pizza;
-                var paul = new Howl({
-                    src: ['../audio/music/2 yeah no paul looks like this.mp3'],
-                    name: "paul"
-                }); howlerObjectsHolder[holderIndex++] = paul;
-                var tasting = new Howl({
-                    src: ['../audio/music/3 tasting flowers.mp3'],
-                    name: "tasting"
-                }); howlerObjectsHolder[holderIndex++] = tasting;
-                var hours = new Howl({
-                    src: ['../audio/music/4 only mark the bright hours.mp3'],
-                    name: "hours"
-                }); howlerObjectsHolder[holderIndex++] = hours;
-                var igloo = new Howl({
-                    src: ['../audio/music/5 an igloo, perhaps.mp3'],
-                    name: "igloo"
-                }); howlerObjectsHolder[holderIndex++] = igloo;
-                var willow = new Howl({
-                    src: ['../audio/music/6 wandering willow.mp3'],
-                    name: "willow"
-                }); howlerObjectsHolder[holderIndex++] = willow;
-                var sun = new Howl({
-                    src: ['../audio/music/7 we haven\'t seen the sun for three days.mp3'],
-                    name: "sun"
-                }); howlerObjectsHolder[holderIndex++] = sun;
-                var happenings = new Howl({
-                    src: ['../audio/music/8 places, things, and happenings.mp3'],
-                    name: "happenings"
-                }); howlerObjectsHolder[holderIndex++] = happenings;
-
+                var howlerObjectsHolder = {
+                    pizza: pizza = new Howl({
+                            src: ['../audio/music/1 in the end, we all became pizza and ate ourselves.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                pizza.fade(0, 1, 5000);
+                            }
+                        }),
+                    paul: paul = new Howl({
+                            src: ['../audio/music/2 yeah no paul looks like this.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                paul.fade(0, 1, 5000);
+                            }
+                        }),
+                    tasting: tasting = new Howl({
+                            src: ['../audio/music/3 tasting flowers.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                tasting.fade(0, 1, 5000);
+                            }
+                        }),
+                    hours: hours = new Howl({
+                            src: ['../audio/music/4 only mark the bright hours.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                hours.fade(0, 1, 5000);
+                            }
+                        }),
+                    igloo: igloo = new Howl({
+                            src: ['../audio/music/5 an igloo, perhaps.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                igloo.fade(0, 1, 5000);
+                            }
+                        }),
+                    willow: willow = new Howl({
+                            src: ['../audio/music/6 wandering willow.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                willow.fade(0, 1, 5000);
+                            }
+                        }),
+                    sun: sun = new Howl({
+                            src: ['../audio/music/7 we haven\'t seen the sun for three days.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                sun.fade(0, 1, 5000);
+                            }
+                        }),
+                    happenings: happenings = new Howl({
+                            src: ['../audio/music/8 places, things, and happenings.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                happenings.fade(0, 1, 5000);
+                            }
+                        }),
+                    noise: noise = new Howl({
+                            src: ['../audio/sfx/noise.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                noise.fade(0, 1, 5000);
+                            }
+                        })
+                }
 
                 
                 // Make a collection of all the buttons with the "music-button" class
                 var musicButtons =  document.getElementsByClassName("music-button");
                 var songIDs = Array; // Note: JavaScript Arrays are mutable
-                var currentSong = {};
+                var defaultSong;
+                var currentSong = {defaultSong};
                 var songIsPlaying = false;
 
                 storeButtonSongs();
                 setButtonSongs();
 
-                // Store button IDs
+                // Store button IDs in array for later use
                 function storeButtonSongs() {
                     // Loop through both array and collection to read and store
                     for (let i = 0; i < musicButtons.length; i++) {
@@ -82,74 +103,64 @@
                     }
                 }
 
+                // Generate onclick events for each button with class "music-button"
                 function setButtonSongs() {
                     for (let i = 0; i < musicButtons.length; i++) {
-                        // console.log("Creating onclick listener for " + songIDs[i]);
                         musicButtons.item(i).addEventListener("click", function() {
-                            musicLogic(this.id);
+                            musicLogic(this.id); // e.g., onclick="musicLogic(pizza)"
                         });
                     }
                 }
 
-
-                // START WITH MAIN MUSIC LOGIC FUNCTION
+                
+                /*** BEGIN PROPER MUSIC ENGINE ***/
+                
+                // Primary logic for playback
                 function musicLogic(id) {
+
                     console.log("ID found: " + id);
 
-                    for (var i = 0; i < songIDs.length; i++) {
-
-                    }
-                    
-                    switch (id) {
-                        case "pizza":
-                            tryToPlay(pizza);
-                            break;
-                        case "paul": 
-                            tryToPlay(paul);
-                            break;
-                        case "tasting": 
-                            tryToPlay(tasting);
-                            break;
-                        case "hours": 
-                            tryToPlay(hours);
-                            break;
-                        case "igloo": 
-                            tryToPlay(igloo);
-                            break;
-                        case "willow": 
-                            tryToPlay(willow);
-                            break;
-                        case "sun": 
-                            tryToPlay(sun);
-                            break;
-                        case "happenings": 
-                            tryToPlay(happenings);
-                            break;
-                        case "stop":
+                    // Catching exception if no song is actually playing
+                    try {
+                        if (id == "stop") {
                             stopSong(currentSong);
-                            break;
+                            console.log("Stopping music...");
+                        }
+                        else {
+                            tryToPlay(howlerObjectsHolder[id]);
+                        }
                     }
+                    catch (error) {
+                        console.log("No song is playing.");
+                    }
+
                 }
 
+                // Attempt to start playing song when triggered
                 function tryToPlay(howlerObj) {
+
+                    // Start song and music mode if page is silent
                     if (songIsPlaying == false) {
+                        console.log("Playing music...");
                         howlerObj.play();
                         currentSong = howlerObj;
                         songIsPlaying = true;
                     }
+                    // Crossfade between tracks if a song is playing already
                     else {
-                        console.log("Song is already playing");
+                        console.log("Crossfading...");
+                        stopSong(currentSong);
+                        howlerObj.play();
                     }
                 }
                 
+                // Fade out currently playing song
                 function stopSong(howlerObj) {
-                    howlerObj.stop();
+                    howlerObj.fade(1, 0, 3000);
                     songIsPlaying = false;
                 }
 
             }
-
-
         </script>
 
     </head>
@@ -165,6 +176,7 @@
             <li class="list-group-item"><button id="willow" class="btn btn-lg btn-dark music-button">wandering willow</button></li>
             <li class="list-group-item"><button id="sun" class="btn btn-lg btn-dark music-button">we haven't seen the sun for three days</button></li>
             <li class="list-group-item"><button id="happenings" class="btn btn-lg btn-dark music-button">places, things, and happenings</button></li>
+            <li class="list-group-item"><button id="noise" class="btn btn-lg btn-dark music-button">Noise</button></li>
             <li class="list-group-item"><button id="stop" class="btn btn-lg btn-dark music-button">Stop All</button></li>
         </ul>
         
