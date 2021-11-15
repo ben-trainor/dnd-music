@@ -14,10 +14,15 @@
   - Animations
 - ***Database***
   - List of all music and sound effects with descriptions
+  - Sheet music downloads
+  - Spotify/some streaming service links
   - Build with Bootstrap
 - ***About***
   - Description of project
   - Social media links
+- ***Devlog***
+  - YouTube links/embedded video
+  - Blog posts
 - ***Support/Contribute***
   - Links to Patreon, Github
   - `Form`: report bugs, suggest features
