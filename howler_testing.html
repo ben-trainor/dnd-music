@@ -15,6 +15,8 @@
 
             window.onload = function() { // Have to wait for page to load before running anything
 
+                const TIMEOUT = 4000;
+
                 // Sleep function copied from https://www.sitepoint.com/delay-sleep-pause-wait/
                 function sleep(ms) {
                     return new Promise(
@@ -110,6 +112,7 @@
                     id_play: "",
                     id_fade: ""
                 };
+                var loading = false;
                 var songIsPlaying = false;
                 var songIsCrossfading = false;
 
@@ -140,18 +143,24 @@
                 // Primary logic for playback
                 function musicLogic(id) {
 
-                    console.log("ID found: " + id);
+                    // console.log("ID found: " + id);
 
                     // Catching exception if no song is actually playing
                     try {
-                        if (id == "stop") {
+                        if (id == "stop" && loading == false) {
+                            loading = true;
                             console.log("Stopping music...");
                             currentSong.obj_play.fade(1, 0, 3000);
                             setTimeout(() => {
+                                console.log("Done stopping.");
                                 currentSong.obj_play.stop(currentSong.id_play);
-                            }, 3000);
+                                loading = false;
+                            }, TIMEOUT);
                         }
-                        else {
+                        else if (loading == true) {
+                            console.log("Please wait for song to finish loading.")
+                        }
+                        else if (loading == false) {
                             tryToPlay(howlerObjectsHolder[id], id);
                         }
                     }
@@ -163,6 +172,8 @@
 
                 // Attempt to start playing song when triggered
                 function tryToPlay(howlerObj, id) {
+
+                    loading = true;
 
                     // Add spinner to clicked button
                     var spinner = document.createElement('div');
@@ -191,8 +202,10 @@
 
                     // Artificially wait to hide the loading spinner
                     setTimeout(() => {
+                        console.log("Done loading.");
                         spinner.remove();
-                    }, 3000);
+                        loading = false;
+                    }, TIMEOUT);
 
                 }
                 
@@ -212,7 +225,7 @@
                     setTimeout(() => {
                         console.log("Done fading. Stopping previous song...");
                         currentSong.obj_fade.stop(currentSong.id_fade);
-                    }, 3000);
+                    }, TIMEOUT);
 
                     if (songIsCrossfading == true) {
                         songIsPlaying = true;
