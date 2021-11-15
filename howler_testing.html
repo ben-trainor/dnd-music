@@ -90,6 +90,7 @@
                 var defaultSong;
                 var currentSong = {defaultSong};
                 var songIsPlaying = false;
+                var songIsCrossfading = false;
 
                 storeButtonSongs();
                 setButtonSongs();
@@ -149,15 +150,23 @@
                     // Crossfade between tracks if a song is playing already
                     else {
                         console.log("Crossfading...");
+                        songIsCrossfading = true;
                         stopSong(currentSong);
                         howlerObj.play();
+                        currentSong = howlerObj;
+                        songIsCrossfading = false;
                     }
                 }
                 
                 // Fade out currently playing song
                 function stopSong(howlerObj) {
                     howlerObj.fade(1, 0, 3000);
-                    songIsPlaying = false;
+                    if (songIsCrossfading == true) {
+                        songIsPlaying = true;
+                    }
+                    else {
+                        songIsPlaying = false;
+                    }
                 }
 
             }
