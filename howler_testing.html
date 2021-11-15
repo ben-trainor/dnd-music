@@ -148,8 +148,13 @@
                     // Catching exception if no song is actually playing
                     try {
 
-                        if (id == "stop" && loading == false) {
-                            
+                        if (id == "killAll") {
+                            console.log("Killing everything.");
+                            Howler.stop();
+                        }
+
+                        else if (id == "stop" && loading == false) {
+
                             loading = true;
                             console.log("Stopping music...");
 
@@ -170,6 +175,7 @@
                             }, TIMEOUT);
 
                         }
+                        
                         else if (loading == true) {
                             console.log("Please wait for song to finish loading.")
                         }
@@ -291,7 +297,10 @@
                         <button id="noise" class="list-group-item list-group-item-action music-button p-3">Noise</button>
                     </li>
                     <li class="list-group-item">
-                        <button id="stop" class="list-group-item list-group-item-action music-button p-3">Stop All</button>
+                        <button id="stop" class="list-group-item list-group-item-action music-button p-3">Stop music</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="killAll" class="list-group-item list-group-item-action music-button p-3">KILL ALL</button>
                     </li>
                 </ul>
             </div>
