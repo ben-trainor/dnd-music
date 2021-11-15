@@ -30,63 +30,72 @@
                             onplay: function() {
                                 console.log("Fading in...");
                                 pizza.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     paul: paul = new Howl({
                             src: ['../audio/music/2 yeah no paul looks like this.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 paul.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     tasting: tasting = new Howl({
                             src: ['../audio/music/3 tasting flowers.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 tasting.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     hours: hours = new Howl({
                             src: ['../audio/music/4 only mark the bright hours.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 hours.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     igloo: igloo = new Howl({
                             src: ['../audio/music/5 an igloo, perhaps.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 igloo.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     willow: willow = new Howl({
                             src: ['../audio/music/6 wandering willow.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 willow.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     sun: sun = new Howl({
                             src: ['../audio/music/7 we haven\'t seen the sun for three days.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 sun.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     happenings: happenings = new Howl({
                             src: ['../audio/music/8 places, things, and happenings.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 happenings.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         }),
                     noise: noise = new Howl({
                             src: ['../audio/sfx/noise.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
                                 noise.fade(0, 1, 5000);
-                            }
+                            },
+                            loop: true
                         })
                 }
 
@@ -95,7 +104,12 @@
                 var musicButtons =  document.getElementsByClassName("music-button");
                 var songIDs = Array; // Note: JavaScript Arrays are mutable
                 var defaultSong;
-                var currentSong = {defaultSong};
+                var currentSong = {
+                    obj_play: "",
+                    obj_fade: "",
+                    id_play: "",
+                    id_fade: ""
+                };
                 var songIsPlaying = false;
                 var songIsCrossfading = false;
 
@@ -129,47 +143,50 @@
                     console.log("ID found: " + id);
 
                     // Catching exception if no song is actually playing
-                    try {
+                    // try {
                         if (id == "stop") {
-                            stopSong(currentSong);
+                            stopSong(currentSong.id_play);
                             console.log("Stopping music...");
                         }
                         else {
                             tryToPlay(howlerObjectsHolder[id], id);
                         }
-                    }
-                    catch (error) {
-                        console.log("No song is playing.");
-                    }
+                    // }
+                    // catch (error) {
+                        // console.log("No song is playing.");
+                    // }
 
                 }
 
                 // Attempt to start playing song when triggered
                 function tryToPlay(howlerObj, id) {
 
+                    // Add spinner to clicked button
                     var spinner = document.createElement('div');
-                    spinner.className = "spinner-border m-2 float-end";
+                    spinner.className = "spinner-border float-end";
                     var currentButton = document.getElementById(id);
                     currentButton.append(spinner);
 
+
                     // Start song and music mode if page is silent
                     if (songIsPlaying == false) {
-                        console.log("Playing music...");
-                        howlerObj.play();
-                        currentSong = howlerObj;
+                        console.log("Starting music...");
+
+                        // Store song instance ID and object to be passed
+                        currentSong.id_play = howlerObj.play();
+                        currentSong.obj_play = howlerObj;
+
                         songIsPlaying = true;
                     }
 
                     // Crossfade between tracks if a song is playing already
                     else {
-                        console.log("Crossfading...");
                         songIsCrossfading = true;
-                        stopSong(currentSong);
-                        howlerObj.play();
-                        currentSong = howlerObj;
+                        crossFade(howlerObj);
                         songIsCrossfading = false;
                     }
 
+                    // Artificially wait to hide the loading spinner
                     setTimeout(() => {
                         spinner.remove();
                     }, 3000);
@@ -177,14 +194,30 @@
                 }
                 
                 // Fade out currently playing song
-                function stopSong(howlerObj) {
-                    howlerObj.fade(1, 0, 3000);
+                function crossFade(howlerObj) {
+
+                    console.log("Crossfading...");
+
+                    currentSong.obj_fade = currentSong.obj_play;
+                    currentSong.id_fade = currentSong.id_play;
+                    currentSong.obj_play = howlerObj;
+                    currentSong.id_play = howlerObj.play();
+
+                    currentSong.obj_fade.fade(1, 0, 3000);
+                    
+                    // Wait until after fade to stop previous song
+                    setTimeout(() => {
+                        console.log("Done fading. Stopping previous song...");
+                        currentSong.obj_fade.stop(currentSong.id_fade);
+                    }, 3000);
+
                     if (songIsCrossfading == true) {
                         songIsPlaying = true;
                     }
                     else {
                         songIsPlaying = false;
                     }
+
                 }
 
             }
@@ -194,38 +227,43 @@
 
     <body>
         
-        <ul class="list-group-flush m-0 p-0">
-            <li class="list-group-item">
-                <button id="pizza" class="btn btn-lg btn-dark music-button">in the end, we all became pizza and ate ourselves</button>
-            </li>
-            <li class="list-group-item">
-                <button id="paul" class="btn btn-lg btn-dark music-button">yeah no paul looks like this</button>
-            </li>
-            <li class="list-group-item">
-                <button id="tasting" class="btn btn-lg btn-dark music-button">tasting flowers</button>
-            </li>
-            <li class="list-group-item">
-                <button id="hours" class="btn btn-lg btn-dark music-button">only mark the bright hours</button>
-            </li>
-            <li class="list-group-item">
-                <button id="igloo" class="btn btn-lg btn-dark music-button">an igloo, perhaps</button>
-            </li>
-            <li class="list-group-item">
-                <button id="willow" class="btn btn-lg btn-dark music-button">wandering willow</button>
-            </li>
-            <li class="list-group-item">
-                <button id="sun" class="btn btn-lg btn-dark music-button">we haven't seen the sun for three days</button>
-            </li>
-            <li class="list-group-item">
-                <button id="happenings" class="btn btn-lg btn-dark music-button">places, things, and happenings</button>
-            </li>
-            <li class="list-group-item">
-                <button id="noise" class="btn btn-lg btn-dark music-button">Noise</button>
-            </li>
-            <li class="list-group-item">
-                <button id="stop" class="btn btn-lg btn-dark music-button">Stop All</button>
-            </li>
-        </ul>
+        <div class="row m-0 p-0">
+            <div class="col-xl-2 col-lg-1"></div>
+            <div class="col-xl-8 col-lg-10">
+                <ul class="list-group-flush m-0 p-0">
+                    <li class="list-group-item">
+                        <button id="pizza" class="list-group-item list-group-item-action music-button p-3">in the end, we all became pizza and ate ourselves</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="paul" class="list-group-item list-group-item-action music-button p-3">yeah no paul looks like this</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="tasting" class="list-group-item list-group-item-action music-button p-3">tasting flowers</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="hours" class="list-group-item list-group-item-action music-button p-3">only mark the bright hours</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="igloo" class="list-group-item list-group-item-action music-button p-3">an igloo, perhaps</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="willow" class="list-group-item list-group-item-action music-button p-3">wandering willow</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="sun" class="list-group-item list-group-item-action music-button p-3">we haven't seen the sun for three days</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="happenings" class="list-group-item list-group-item-action music-button p-3">places, things, and happenings</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="noise" class="list-group-item list-group-item-action music-button p-3">Noise</button>
+                    </li>
+                    <li class="list-group-item">
+                        <button id="stop" class="list-group-item list-group-item-action music-button p-3">Stop All</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
         
         
         
