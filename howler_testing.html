@@ -143,18 +143,21 @@
                     console.log("ID found: " + id);
 
                     // Catching exception if no song is actually playing
-                    // try {
+                    try {
                         if (id == "stop") {
-                            stopSong(currentSong.id_play);
                             console.log("Stopping music...");
+                            currentSong.obj_play.fade(1, 0, 3000);
+                            setTimeout(() => {
+                                currentSong.obj_play.stop(currentSong.id_play);
+                            }, 3000);
                         }
                         else {
                             tryToPlay(howlerObjectsHolder[id], id);
                         }
-                    // }
-                    // catch (error) {
-                        // console.log("No song is playing.");
-                    // }
+                    }
+                    catch (error) {
+                        console.log("No song is playing.");
+                    }
 
                 }
 
