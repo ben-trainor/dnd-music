@@ -147,23 +147,39 @@
 
                     // Catching exception if no song is actually playing
                     try {
+
                         if (id == "stop" && loading == false) {
+                            
                             loading = true;
                             console.log("Stopping music...");
+
+                            // Add spinner to clicked button
+                            var spinner = document.createElement('div');
+                            spinner.className = "spinner-border float-end";
+                            var currentButton = document.getElementById(id);
+                            currentButton.append(spinner);
+
+                            // Fade out audio
                             currentSong.obj_play.fade(1, 0, 3000);
+
                             setTimeout(() => {
                                 console.log("Done stopping.");
                                 currentSong.obj_play.stop(currentSong.id_play);
+                                spinner.remove();
                                 loading = false;
                             }, TIMEOUT);
+
                         }
                         else if (loading == true) {
                             console.log("Please wait for song to finish loading.")
                         }
-                        else if (loading == false) {
+
+                        else if (id != "stop" && loading == false) {
                             tryToPlay(howlerObjectsHolder[id], id);
                         }
+
                     }
+
                     catch (error) {
                         console.log("No song is playing.");
                     }
@@ -180,7 +196,6 @@
                     spinner.className = "spinner-border float-end";
                     var currentButton = document.getElementById(id);
                     currentButton.append(spinner);
-
 
                     // Start song and music mode if page is silent
                     if (songIsPlaying == false) {
@@ -237,6 +252,7 @@
                 }
 
             }
+
         </script>
 
     </head>
