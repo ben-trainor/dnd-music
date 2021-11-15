@@ -15,6 +15,13 @@
 
             window.onload = function() { // Have to wait for page to load before running anything
 
+                // Sleep function copied from https://www.sitepoint.com/delay-sleep-pause-wait/
+                function sleep(ms) {
+                    return new Promise(
+                        resolve => setTimeout(resolve, ms)
+                    );
+                }
+
 
                 // Initialize song objects and store them in the parent object
                 var howlerObjectsHolder = {
@@ -128,7 +135,7 @@
                             console.log("Stopping music...");
                         }
                         else {
-                            tryToPlay(howlerObjectsHolder[id]);
+                            tryToPlay(howlerObjectsHolder[id], id);
                         }
                     }
                     catch (error) {
@@ -138,7 +145,12 @@
                 }
 
                 // Attempt to start playing song when triggered
-                function tryToPlay(howlerObj) {
+                function tryToPlay(howlerObj, id) {
+
+                    var spinner = document.createElement('div');
+                    spinner.className = "spinner-border m-2 float-end";
+                    var currentButton = document.getElementById(id);
+                    currentButton.append(spinner);
 
                     // Start song and music mode if page is silent
                     if (songIsPlaying == false) {
@@ -147,6 +159,7 @@
                         currentSong = howlerObj;
                         songIsPlaying = true;
                     }
+
                     // Crossfade between tracks if a song is playing already
                     else {
                         console.log("Crossfading...");
@@ -156,6 +169,11 @@
                         currentSong = howlerObj;
                         songIsCrossfading = false;
                     }
+
+                    setTimeout(() => {
+                        spinner.remove();
+                    }, 3000);
+
                 }
                 
                 // Fade out currently playing song
@@ -177,16 +195,36 @@
     <body>
         
         <ul class="list-group-flush m-0 p-0">
-            <li class="list-group-item"><button id="pizza" class="btn btn-lg btn-dark music-button">in the end, we all became pizza and ate ourselves</button></li>
-            <li class="list-group-item"><button id="paul" class="btn btn-lg btn-dark music-button">yeah no paul looks like this</button></li>
-            <li class="list-group-item"><button id="tasting" class="btn btn-lg btn-dark music-button">tasting flowers</button></li>
-            <li class="list-group-item"><button id="hours" class="btn btn-lg btn-dark music-button">only mark the bright hours</button></li>
-            <li class="list-group-item"><button id="igloo" class="btn btn-lg btn-dark music-button">an igloo, perhaps</button></li>
-            <li class="list-group-item"><button id="willow" class="btn btn-lg btn-dark music-button">wandering willow</button></li>
-            <li class="list-group-item"><button id="sun" class="btn btn-lg btn-dark music-button">we haven't seen the sun for three days</button></li>
-            <li class="list-group-item"><button id="happenings" class="btn btn-lg btn-dark music-button">places, things, and happenings</button></li>
-            <li class="list-group-item"><button id="noise" class="btn btn-lg btn-dark music-button">Noise</button></li>
-            <li class="list-group-item"><button id="stop" class="btn btn-lg btn-dark music-button">Stop All</button></li>
+            <li class="list-group-item">
+                <button id="pizza" class="btn btn-lg btn-dark music-button">in the end, we all became pizza and ate ourselves</button>
+            </li>
+            <li class="list-group-item">
+                <button id="paul" class="btn btn-lg btn-dark music-button">yeah no paul looks like this</button>
+            </li>
+            <li class="list-group-item">
+                <button id="tasting" class="btn btn-lg btn-dark music-button">tasting flowers</button>
+            </li>
+            <li class="list-group-item">
+                <button id="hours" class="btn btn-lg btn-dark music-button">only mark the bright hours</button>
+            </li>
+            <li class="list-group-item">
+                <button id="igloo" class="btn btn-lg btn-dark music-button">an igloo, perhaps</button>
+            </li>
+            <li class="list-group-item">
+                <button id="willow" class="btn btn-lg btn-dark music-button">wandering willow</button>
+            </li>
+            <li class="list-group-item">
+                <button id="sun" class="btn btn-lg btn-dark music-button">we haven't seen the sun for three days</button>
+            </li>
+            <li class="list-group-item">
+                <button id="happenings" class="btn btn-lg btn-dark music-button">places, things, and happenings</button>
+            </li>
+            <li class="list-group-item">
+                <button id="noise" class="btn btn-lg btn-dark music-button">Noise</button>
+            </li>
+            <li class="list-group-item">
+                <button id="stop" class="btn btn-lg btn-dark music-button">Stop All</button>
+            </li>
         </ul>
         
         
