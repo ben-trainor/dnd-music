@@ -94,6 +94,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Spinners */
+
+.spinner-border {
+    height: 23px;
+    width: 23px;
+    margin: 0;
+}
+
+
 /* Buttons */
 
     /* Music buttons */
