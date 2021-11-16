@@ -72,25 +72,22 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 
-.music-container {
+.audio-container {
     max-height: 100vh;
     height: 100vh;
     overflow-y: scroll;
 }
 
-.sfx-container {
-    max-height: 100vh;
-    height: 100vh;
-    overflow-y: hidden;
+@media only screen and (max-width: 768px) {
+    .audio-container {
+        max-height: 50vh;
+        height: 50vh;
+        overflow-y: scroll;
+    }
 }
 
-.sfx-container #ambience, .sfx-container #sfx {
-    max-height: 50vh;
-    height: 50vh;
-    overflow-y: scroll;
-} 
 
-/* Switch colors */
+/* Bootstrap switch colors */
 
 .form-check-input:focus {
     box-shadow: 0px 0px 4px 1px rgba(170, 67, 67, 0.459);
