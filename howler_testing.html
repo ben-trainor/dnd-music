@@ -16,6 +16,7 @@
             window.onload = function() { // Have to wait for page to load before running anything
 
                 const TIMEOUT = 4000;
+                const FADELENGTH = 3000;
 
                 // Sleep function copied from https://www.sitepoint.com/delay-sleep-pause-wait/
                 function sleep(ms) {
@@ -31,7 +32,7 @@
                             src: ['../audio/music/1 in the end, we all became pizza and ate ourselves.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                pizza.fade(0, 1, 5000);
+                                pizza.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -39,7 +40,7 @@
                             src: ['../audio/music/2 yeah no paul looks like this.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                paul.fade(0, 1, 5000);
+                                paul.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -47,7 +48,7 @@
                             src: ['../audio/music/3 tasting flowers.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                tasting.fade(0, 1, 5000);
+                                tasting.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -55,7 +56,7 @@
                             src: ['../audio/music/4 only mark the bright hours.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                hours.fade(0, 1, 5000);
+                                hours.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -63,7 +64,7 @@
                             src: ['../audio/music/5 an igloo, perhaps.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                igloo.fade(0, 1, 5000);
+                                igloo.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -71,7 +72,7 @@
                             src: ['../audio/music/6 wandering willow.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                willow.fade(0, 1, 5000);
+                                willow.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -79,7 +80,7 @@
                             src: ['../audio/music/7 we haven\'t seen the sun for three days.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                sun.fade(0, 1, 5000);
+                                sun.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -87,7 +88,7 @@
                             src: ['../audio/music/8 places, things, and happenings.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                happenings.fade(0, 1, 5000);
+                                happenings.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         }),
@@ -95,7 +96,7 @@
                             src: ['../audio/sfx/noise.mp3'],
                             onplay: function() {
                                 console.log("Fading in...");
-                                noise.fade(0, 1, 5000);
+                                noise.fade(0, 1, FADELENGTH);
                             },
                             loop: true
                         })
@@ -165,7 +166,7 @@
                             currentButton.append(spinner);
 
                             // Fade out audio
-                            currentSong.obj_play.fade(1, 0, 3000);
+                            currentSong.obj_play.fade(1, 0, FADELENGTH);
 
                             setTimeout(() => {
                                 console.log("Done stopping.");
@@ -240,7 +241,7 @@
                     currentSong.obj_play = howlerObj;
                     currentSong.id_play = howlerObj.play();
 
-                    currentSong.obj_fade.fade(1, 0, 3000);
+                    currentSong.obj_fade.fade(1, 0, FADELENGTH);
                     
                     // Wait until after fade to stop previous song
                     setTimeout(() => {
