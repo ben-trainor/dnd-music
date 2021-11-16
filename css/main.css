@@ -87,6 +87,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Navbar */
+
+.navbar {
+    z-index: 50;
+}
+
+.navbar-toggler-icon {
+    fill: white;
+}
+
+button.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+
 /* Bootstrap switch colors */
 
 .form-check-input:focus {
