@@ -118,6 +118,10 @@
                 var songIsCrossfading = false;
                 var noSongYet = true;
 
+                var alert = document.createElement('div');
+                alert.className = "alert alert-warning alert-dismissible fade show position-absolute top-0 left-50 mt-3";
+                alert.innerHTML = "Please wait for song to finish loading.";
+
                 storeButtonSongs();
                 setButtonSongs();
 
@@ -182,7 +186,8 @@
                     }
                     
                     else if (loading == true) {
-                        console.log("Please wait for song to finish loading.")
+                        document.getElementById("full_page").append(alert);
+                        console.log("Please wait for song to finish loading.");
                     }
 
                     else if (id != "stop" && loading == false) {
@@ -227,6 +232,7 @@
                         console.log("Done loading.");
                         spinner.remove();
                         loading = false;
+                        alert.remove();
                     }, TIMEOUT);
 
                 }
