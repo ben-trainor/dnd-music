@@ -18,8 +18,8 @@ h1, h2, h3, h4, h5, h6 {
 
     Primary (main): #AADEF3
     Primary-dark (main-dark): #6DA1B6
-    Secondary (second): #fad083
-    Secondary-dark (second-dark): #B6A96D
+    Secondary (second): #ee6565
+    Secondary-dark (second-dark): #aa4343
 
 */
 
@@ -32,10 +32,10 @@ h1, h2, h3, h4, h5, h6 {
         background-color: #6DA1B6;
     }
     .bg-second {
-        background-color: #fad083;
+        background-color: #ee6565;
     }
     .bg-second-dark {
-        background-color: #c09b56;
+        background-color: #aa4343;
     }
 
     /* Text colors */
@@ -47,10 +47,10 @@ h1, h2, h3, h4, h5, h6 {
         color: #6DA1B6;
     }
     .text-second {
-        color: #fad083;
+        color: #ee6565;
     }
     .text-second-dark {
-        color: #c09b56;
+        color: #aa4343;
     }
 
     /* Text-shadow colors */
@@ -65,28 +65,40 @@ h1, h2, h3, h4, h5, h6 {
         text-shadow: 2px 2px 0px #6DA1B6;
     }
     .text-sh-second {
-        text-shadow: 2px 2px 0px #fad083;
+        text-shadow: 2px 2px 0px #ee6565;
     }
     .text-sh-second-dark {
-        text-shadow: 2px 2px 0px #c09b56;
+        text-shadow: 2px 2px 0px #aa4343;
     }
 
 
-.audio-container {
+.music-container {
     max-height: 100vh;
     height: 100vh;
     overflow-y: scroll;
 }
 
+.sfx-container {
+    max-height: 100vh;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.sfx-container #ambience, .sfx-container #sfx {
+    max-height: 50vh;
+    height: 50vh;
+    overflow-y: scroll;
+} 
+
 /* Switch colors */
 
 .form-check-input:focus {
-    box-shadow: 0px 0px 4px 1px rgba(248, 187, 73, 0.534);
+    box-shadow: 0px 0px 4px 1px rgba(170, 67, 67, 0.459);
 }
 
 .form-check-input:checked, .form-check-input:active {
-    background-color: #fad083;
-    border-color: #c09b56;
+    background-color: #ee6565;
+    border-color: #ee6565;
 }
 
 .form-check-input:focus:not(:checked) {
@@ -113,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
     /* Music buttons */
 
     /* button.music-button {
-        background-color: #fad083;
+        background-color: #ee6565;
         color: white;
         border: 1px solid #c09b56;
         width: 100px;
@@ -122,12 +134,16 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     button.music-button:active {
-        background-color: #c09b56;
+        background-color: #ee6565;
         color: white;
-        border: 2px solid #c09b56;
+        border: 2px solid #ee6565;
         width: 100px;
         height: 60px;
     } */
+
+    #music > ul .music-button {
+        min-height: 90px;
+    }
 
 /* Header menu */
 
