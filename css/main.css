@@ -219,6 +219,17 @@ button.navbar-toggler:focus {
     margin-top: 4px;
 }
 
+.roll-button .roll-spinner {
+    height: 28px;
+    width: 28px;
+    margin-top: 2px;
+}
+
+.roll-group {
+    background: rgb(79,110,140);
+    background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
+}
+    
 
 /* Buttons */
 
