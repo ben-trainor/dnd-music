@@ -92,6 +92,12 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.single-container {
+    max-height: 100vh;
+    min-height: 100vh;
+    overflow-y: scroll;
+}
+
 /* Alerts */
 
 .alert {
@@ -233,3 +239,15 @@ button.navbar-toggler:focus {
     }
 
 
+/* Social media icons */
+
+.social-icon {
+    filter: invert(1);
+    width: 60px;
+    border-radius: 100%;
+    transition-duration: .2s;
+}
+
+.social-icon:hover {
+    background-color: #119a9a;
+}
