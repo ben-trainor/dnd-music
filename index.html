@@ -18,13 +18,6 @@
                 const FADELENGTH = 2000;
                 const TIMEOUT = FADELENGTH + 50;
 
-                // Sleep function copied from https://www.sitepoint.com/delay-sleep-pause-wait/
-                function sleep(ms) {
-                    return new Promise(
-                        resolve => setTimeout(resolve, ms)
-                    );
-                }
-
 
                 // Initialize song objects and store them in the parent object
                 var howlerObjectsHolder = {
@@ -119,8 +112,7 @@
                 var noSongYet = true;
 
                 var alert = document.createElement('div');
-                alert.className = "alert alert-warning alert-dismissible fade show position-absolute top-0 left-50 mt-3";
-                alert.innerHTML = "Please wait for song to finish loading.";
+                alert.className = "alert alert-warning alert-dismissible fade show position-absolute shadow text-center top-0 left-50 mt-3 p-3";
 
                 storeButtonSongs();
                 setButtonSongs();
@@ -158,7 +150,24 @@
                     }
 
                     else if (id == "stop" && noSongYet == true) {
+                        alert.innerHTML = "No songs are playing!";
+                        document.getElementById("full_page").append(alert);
                         console.log("No songs are playing!");
+                        setTimeout(() => {
+                            alert.remove();
+                        }, TIMEOUT);
+                    }
+                    
+                    else if (loading == true && id != "stop") {
+                        alert.innerHTML = "Have patience, young padawan.";
+                        document.getElementById("full_page").append(alert);
+                        console.log("Please wait for song to finish loading.");
+                    }
+
+                    else if (loading == true && id == "stop") {
+                        alert.innerHTML = "Hold your horses there, bucko. We're working on it.";
+                        document.getElementById("full_page").append(alert);
+                        console.log("Please wait for song to finish loading.");
                     }
 
                     else if (id == "stop" && loading == false && noSongYet == false) {
@@ -179,15 +188,11 @@
                             console.log("Done stopping.");
                             currentSong.obj_play.stop(currentSong.id_play);
                             spinner.remove();
+                            alert.remove();
                             loading = false;
                             noSongYet = true;
                         }, TIMEOUT);
 
-                    }
-                    
-                    else if (loading == true) {
-                        document.getElementById("full_page").append(alert);
-                        console.log("Please wait for song to finish loading.");
                     }
 
                     else if (id != "stop" && loading == false) {
@@ -231,8 +236,8 @@
                     setTimeout(() => {
                         console.log("Done loading.");
                         spinner.remove();
-                        loading = false;
                         alert.remove();
+                        loading = false;
                     }, TIMEOUT);
 
                 }
@@ -267,7 +272,136 @@
             }
 
         </script>
-        <script id="ambience_engine" defer></script>
+        <script id="ambience_engine" defer>
+
+            window.onload = function() {
+
+                const FADELENGTH = 2000;
+                const TIMEOUT = FADELENGTH + 50;
+
+                var ambiencesHolder = {
+                    fire_crackling1: fire_crackling1 = new Howl({
+                            src: ['../audio/music/1 in the end, we all became pizza and ate ourselves.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                fire_crackling1.fade(0, 1, FADELENGTH);
+                            },
+                            loop: true,
+                            volume: .7
+                        }),
+                    fire_crackling2: fire_crackling2 = new Howl({
+                            src: ['../audio/music/2 yeah no paul looks like this.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                fire_crackling2.fade(0, 1, FADELENGTH);
+                            },
+                            loop: true,
+                            volume: .7
+                        }),
+                    fire_crackling3: fire_crackling3 = new Howl({
+                            src: ['../audio/music/3 tasting flowers.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                fire_crackling3.fade(0, 1, FADELENGTH);
+                            },
+                            loop: true,
+                            volume: .7
+                        }),
+                    fire_crackling4: fire_crackling4 = new Howl({
+                            src: ['../audio/music/4 only mark the bright hours.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                fire_crackling4.fade(0, 1, FADELENGTH);
+                            },
+                            loop: true,
+                            volume: .7
+                        }),
+                    fire_crackling5: fire_crackling5 = new Howl({
+                            src: ['../audio/sfx/noise.mp3'],
+                            onplay: function() {
+                                console.log("Fading in...");
+                                fire_crackling5.fade(0, 1, FADELENGTH);
+                            },
+                            loop: true,
+                            volume: .7
+                        })         
+                }
+
+
+                var ambienceButtons = document.getElementsByClassName("ambience-button");
+                var ambienceButtonIDs = Array;
+
+                var playingAmbiencesIndex = 0;
+                var stopIndex = "";
+                var playingAmbiencesButtonIDs = [""];
+                var playingAmbiencesPlayIDs = [""];
+
+                var clickedAmbienceIsPlaying = false;
+
+                storeAmbiences();
+                setAmbiences();
+
+
+                function storeAmbiences() {
+                    for (let i = 0; i < ambienceButtons.length; i++) {
+                        ambienceButtonIDs[i] = ambienceButtons.item(i);
+                    }
+                }
+
+                function setAmbiences() {
+                    for (let i = 0; i < ambienceButtons.length; i++) {
+                        ambienceButtons.item(i).addEventListener("click", function() {
+                            ambienceLogic(this.id);
+                        });
+                    }
+                }
+
+
+                function ambienceLogic(ambienceID) {
+
+                    console.log("ID found: " + ambienceID);
+
+                    // Look through playingAmbiencesButtonIDs array to see if ID is listed
+                    for (let i = 0; i < playingAmbiencesButtonIDs.length; i++) {
+                        console.log("Checking index " + i + " against " + playingAmbiencesButtonIDs[i]);
+                        if (ambienceID == playingAmbiencesButtonIDs[i]) {
+                            console.log(ambienceID + " is playing!");
+                            clickedAmbienceIsPlaying = true;
+                            stopIndex = i;
+                            break;
+                        }
+                    }
+                    
+                    if (clickedAmbienceIsPlaying == false) {
+                        // play clicked ambience
+                        // store button ID and play() ID in arrays
+                        console.log("Playing " + ambienceID);
+
+                        playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
+                        console.log("playingAmbiencesButtonIDs [" + playingAmbiencesIndex + ", " + ambienceID + " ]");
+
+                        playingAmbiencesPlayIDs[playingAmbiencesIndex] = ambiencesHolder[ambienceID].play();
+                        
+                        playingAmbiencesIndex++;
+                        console.log("Increasing index...");
+                    }
+
+                    else if (clickedAmbienceIsPlaying == true) {
+                        // fade clicked ambience
+                        // remove from array of playing ambiences array
+                        console.log("Searching for " + ambienceID);
+                        ambiencesHolder[ambienceID].stop(playingAmbiencesPlayIDs[stopIndex]);
+                        playingAmbiencesPlayIDs.splice(stopIndex, 1);
+                        playingAmbiencesButtonIDs.splice(stopIndex, 1);
+                        clickedAmbienceIsPlaying = false;
+                        playingAmbiencesIndex--;
+                    }
+                    
+                }
+
+            }
+            
+        </script>
         
     </head>
 
@@ -320,6 +454,7 @@
             
         <div class="row text-center m-0 p-0">
 
+            <!-- Ambience -->
             <div class="col-md-5 bg-dark text-dark p-md-0 p-2 m-0 gap-0 audio-container">
 
                 <div class="row m-0 p-0 py-4" id="ambience">
@@ -330,7 +465,7 @@
                         <div class="row form-check form-switch m-0 px-lg-5 p-0 py-3 bg-white rounded">
                             <label class="col-xl-8 form-check-label float-start p-0 pt-1 m-0 text-xl-start fs-5" for="fire_crackling1">Fire crackling 1</label>
                             <label class="switch mt-xl-1 mb-xl-0 mt-3 mb-1 float-xl-end">
-                                <input type="checkbox" id="fire_crackling1">
+                                <input type="checkbox" class="ambience-button" id="fire_crackling1">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -340,7 +475,7 @@
                         <div class="row form-check form-switch m-0 px-lg-5 p-0 py-3 bg-white rounded">
                             <label class="col-xl-8 form-check-label float-start p-0 pt-1 m-0 text-xl-start fs-5" for="fire_crackling2">Fire crackling 2</label>
                             <label class="switch mt-xl-1 mb-xl-0 mt-3 mb-1 float-xl-end">
-                                <input type="checkbox" id="fire_crackling2">
+                                <input type="checkbox" class="ambience-button" id="fire_crackling2">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -350,7 +485,7 @@
                         <div class="row form-check form-switch m-0 px-lg-5 p-0 py-3 bg-white rounded">
                             <label class="col-xl-8 form-check-label float-start p-0 pt-1 m-0 text-xl-start fs-5" for="fire_crackling3">Fire crackling 3</label>
                             <label class="switch mt-xl-1 mb-xl-0 mt-3 mb-1 float-xl-end">
-                                <input type="checkbox" id="fire_crackling3">
+                                <input type="checkbox" class="ambience-button" id="fire_crackling3">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -360,7 +495,7 @@
                         <div class="row form-check form-switch m-0 px-lg-5 p-0 py-3 bg-white rounded">
                             <label class="col-xl-8 form-check-label float-start p-0 pt-1 m-0 text-xl-start fs-5" for="fire_crackling4">Fire crackling 4</label>
                             <label class="switch mt-xl-1 mb-xl-0 mt-3 mb-1 float-xl-end">
-                                <input type="checkbox" id="fire_crackling4">
+                                <input type="checkbox" class="ambience-button" id="fire_crackling4">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -370,7 +505,7 @@
                         <div class="row form-check form-switch m-0 px-lg-5 p-0 py-3 bg-white rounded">
                             <label class="col-xl-8 form-check-label float-start p-0 pt-1 m-0 text-xl-start fs-5" for="fire_crackling5">Fire crackling 5</label>
                             <label class="switch mt-xl-1 mb-xl-0 mt-3 mb-1 float-xl-end">
-                                <input type="checkbox" id="fire_crackling5">
+                                <input type="checkbox" class="ambience-button" id="fire_crackling5">
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -384,6 +519,7 @@
                 
             </div>
     
+            <!-- Music -->
             <div class="row col-md-7 text-dark bg-main-dark pt-4 p-0 m-0 audio-container" id="music">
                 
                 <h1 class="text-sh-dark text-light mb-xl-4 mb-4">MUSIC</h1>
