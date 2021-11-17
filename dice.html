@@ -15,9 +15,11 @@
             window.onload = function() {
 
 
-                const TIMEOUT = 1000;
+                const TIMEOUT = 2000;
+                var alertID = "";
 
                 var rolling = false;
+                var rollNumber = 0;
                 
                 var rollButtonElements = document.getElementsByClassName("roll-button");
                 var rollButtonIDs = Array;
@@ -62,10 +64,8 @@
 
                 function roll(rollID) {
                     
-                    // TODO:    add crit text for D20
-                    //          handle overlapping remove() calls
-                    
                     rolling = true;
+                    clearTimeout(alertID);
                     
                     console.log("Rolling a D" + rollID);
                     document.getElementById(rollID).append(rollingMsg);
@@ -73,17 +73,25 @@
 
                     setTimeout(() => {
                         document.getElementById("full_page").append(alert);
-                        alert.innerHTML = ("Rolled: " + getRandomIntInclusive(1, rollID));
+                        rollNumber = getRandomIntInclusive(1, rollID);
+
+                        if (rollNumber == 20) {
+                            alert.innerHTML = "Rolled a nat 20!";
+                        }
+                        else {
+                            alert.innerHTML = "Rolled " + rollNumber;
+                        }
 
                         rollingMsg.remove();
                         spinner.remove();
 
                         rolling = false;
+
                     }, TIMEOUT);
 
-                    setTimeout(() => {
+                    alertID = setTimeout(() => {
                         alert.remove();
-                    }, TIMEOUT*3.3);
+                    }, TIMEOUT*3);
 
                 }
 
@@ -157,7 +165,7 @@
 
                 <div class="row m-0 p-0 py-4" id="ambience">
                     
-                    <h1 class="text-sh-dark text-light mb-xl-4 mb-4">MUSIC</h1>
+                    <h1 class="text-sh-dark text-light mb-xl-4 mb-4">ROLL YOUR DICE</h1>
 
                 </div>
 
