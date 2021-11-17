@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, h6 {
     Colors 
 
     Primary (main): #AADEF3
-    Primary-dark (main-dark): #6DA1B6
+    Primary-dark (main-dark): #4F6E8C
     Secondary (second): #ee6565
     Secondary-dark (second-dark): #aa4343
 
@@ -29,7 +29,7 @@ h1, h2, h3, h4, h5, h6 {
         background-color: #AADEF3;
     }
     .bg-main-dark {
-        background-color: #6DA1B6;
+        background-color: #4F6E8C;
     }
     .bg-second {
         background-color: #ee6565;
@@ -44,7 +44,7 @@ h1, h2, h3, h4, h5, h6 {
         color: #AADEF3;
     }
     .text-main-dark {
-        color: #6DA1B6;
+        color: #4F6E8C;
     }
     .text-second {
         color: #ee6565;
@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
         text-shadow: 2px 2px 0px #AADEF3;
     }
     .text-sh-main-dark {
-        text-shadow: 2px 2px 0px #6DA1B6;
+        text-shadow: 2px 2px 0px #4F6E8C;
     }
     .text-sh-second {
         text-shadow: 2px 2px 0px #ee6565;
@@ -136,68 +136,68 @@ button.navbar-toggler:focus {
 
 /* Sliders */
 
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
+    /* The switch - the box around the slider */
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+    }
 
-/* Hide default HTML checkbox */
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+    /* Hide default HTML checkbox */
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
 
-/* The slider */
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
+    /* The slider */
+    .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    -webkit-transition: .3s;
-    transition: .3s;
-}
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        -webkit-transition: .3s;
+        transition: .3s;
+    }
 
-input:checked + .slider {
-    background-color: #ee6565;
-}
+    input:checked + .slider {
+        background-color: #ee6565;
+    }
 
-input:focus + .slider {
-    box-shadow: 0 0 1px #ee6565;
-}
+    input:focus + .slider {
+        box-shadow: 0 0 1px #ee6565;
+    }
 
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
+    input:checked + .slider:before {
+        -webkit-transform: translateX(26px);
+        -ms-transform: translateX(26px);
+        transform: translateX(26px);
+    }
 
-/* Rounded sliders */
-.slider.round {
-    border-radius: 34px;
-}
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
 
-.slider.round:before {
-    border-radius: 50%;
-}
+    .slider.round:before {
+        border-radius: 50%;
+    }
 
 
 /* Spinners */
@@ -218,26 +218,18 @@ input:checked + .slider:before {
 
     /* Music buttons */
 
-    /* button.music-button {
-        background-color: #ee6565;
-        color: white;
-        border: 1px solid #c09b56;
-        width: 100px;
-        height: 60px;
-        list-style-type: none;
-    }
-
-    button.music-button:active {
-        background-color: #ee6565;
-        color: white;
-        border: 2px solid #ee6565;
-        width: 100px;
-        height: 60px;
-    } */
-
     #music > ul .music-button {
         min-height: 90px;
     }
 
-/* Header menu */
+    /* Success buttons */
+
+    .btn-success {
+        background-color: #156541;
+    }
+
+    .btn-success:focus, .btn-success:active, .btn-success:hover {
+        background-color: #105234;
+    }
+
 
