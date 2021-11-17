@@ -249,6 +249,17 @@ button.navbar-toggler:focus {
         background-color: #105234;
     }
 
+    /* Roll buttons */
+
+    .roll-button > img {
+        width: 45px;
+        border-radius: 30px;
+    }
+
+    .roll-button:hover > img {
+        filter: invert(.3);
+    }
+
 
 /* Social media icons */
 

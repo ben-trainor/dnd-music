@@ -15,7 +15,7 @@
             window.onload = function() {
 
 
-                const TIMEOUT = 2000;
+                const TIMEOUT = 1200;
                 var alertID = "";
 
                 var rolling = false;
@@ -27,10 +27,10 @@
                 var alert = document.createElement('div');
                 alert.className = "alert alert-warning alert-dismissible fade show position-absolute shadow text-center top-0 left-50 mt-3 p-3";
                 var rollingMsg = document.createElement('div');
-                rollingMsg.className = "rollingMsg fw-normal float-end ms-3";
-                rollingMsg.innerHTML = "Rolling..."
+                rollingMsg.className = "rollingMsg fw-normal float-end ms-3 mt-2 pe-3";
+                rollingMsg.innerHTML = "Rolling...";
                 var spinner = document.createElement('div');
-                spinner.className = "spinner-border roll-spinner float-end fs-5 text-dark";
+                spinner.className = "spinner-border roll-spinner float-end fs-5 mt-2 text-dark";
 
                 storeButtons();
                 setButtons();
@@ -165,20 +165,38 @@
 
                 <div class="row m-0 p-0 py-4" id="ambience">
                     
-                    <h1 class="text-sh-dark text-light mb-xl-4 mb-4">ROLL YOUR DICE</h1>
+                    <h1 class="text-sh-second-dark text-light mb-xl-4 mb-4">ROLL YOUR DICE</h1>
 
                 </div>
 
 
                 <div class="row  m-0 p-0">
 
-                    <ul class="row list-group-flush roll-group text-start m-0 px-xl-4 py-xl-4 py-3 p-3 gap-xl-4 gap-3 rounded">
-                        <button id="4" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-4 border-1 rounded">D4</button>
-                        <button id="6" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-4 border-1 rounded">D6</button>
-                        <button id="8" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-4 border-1 rounded">D8</button>
-                        <button id="10" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-4 border-1 rounded">D10</button>
-                        <button id="12" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-4 border-1 rounded">D12</button>
-                        <button id="20" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-4 border-1 rounded">D20</button>
+                    <ul class="row list-group-flush roll-group text-start m-0 px-xl-3 py-xl-3 py-3 p-3 gap-xl-3 gap-3 rounded">
+                        <button id="4" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                            <img class="float-start ms-1 me-2" src="img/dice/d4.png" alt="D4">
+                            <p class="d-block float-start mt-2">D4</p>
+                        </button>
+                        <button id="6" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                            <img class="float-start ms-1 me-2" src="img/dice/d6.png" alt="D6">
+                            <p class="d-block float-start mt-2">D6</p>
+                        </button>
+                        <button id="8" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                            <img class="float-start ms-1 me-2" src="img/dice/d8.png" alt="D8">
+                            <p class="d-block float-start mt-2">D8</p>
+                        </button>
+                        <button id="10" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                            <img class="float-start ms-1 me-2" src="img/dice/d10.png" alt="D10">
+                            <p class="d-block float-start mt-2">D10</p>
+                        </button>
+                        <button id="12" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                            <img class="float-start ms-1 me-2" src="img/dice/d12.png" alt="D12">
+                            <p class="d-block float-start mt-2">D12</p>
+                        </button>
+                        <button id="20" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                            <img class="float-start ms-1 me-2" src="img/dice/d20.png" alt="D20">
+                            <p class="d-block float-start mt-2">D20</p>
+                        </button>
                     </ul>
                     
                 </div>
