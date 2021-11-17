@@ -371,7 +371,7 @@
 
                     // Look through playingAmbiencesButtonIDs array to see if ID is listed
                     for (let i = 0; i < playingAmbiencesButtonIDs.length; i++) {
-                        console.log("Checking index " + i + " against " + playingAmbiencesButtonIDs[i]);
+                        // console.log("Checking index " + i + " against " + playingAmbiencesButtonIDs[i]);
                         if (ambienceID == playingAmbiencesButtonIDs[i]) {
                             console.log(ambienceID + " is playing!");
                             clickedAmbienceIsPlaying = true;
@@ -385,26 +385,28 @@
                         // store button ID and play() ID in arrays
                         console.log("Playing " + ambienceID);
 
-                        console.log("playingAmbiencesButtonIDs [" + playingAmbiencesIndex + ", " + ambienceID + " ]");
+                        // console.log("playingAmbiencesButtonIDs [" + playingAmbiencesIndex + ", " + ambienceID + " ]");
                         playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
 
                         playingAmbiencesPlayIDs[playingAmbiencesIndex] = ambiencesHolder[ambienceID].play();
                         
-                        console.log("Increasing index and lowering volume...");
+                        // console.log("Increasing index and lowering volume...");
                         playingAmbiencesIndex++;
-                        Howler.volume(1 - (playingAmbiencesIndex / 10));
+                        Howler.volume(1 - (playingAmbiencesIndex / 10) * 1.2);
+                        console.log("Volume: " + Howler.volume());
                     }
 
                     else if (clickedAmbienceIsPlaying == true) {
                         // TODO: fade clicked ambience
                         // remove from array of playing ambiences
-                        console.log("Searching for " + ambienceID);
+                        // console.log("Searching for " + ambienceID);
                         ambiencesHolder[ambienceID].stop(playingAmbiencesPlayIDs[stopIndex]);
                         playingAmbiencesPlayIDs.splice(stopIndex, 1);
                         playingAmbiencesButtonIDs.splice(stopIndex, 1);
                         clickedAmbienceIsPlaying = false;
                         playingAmbiencesIndex--;
-                        Howler.volume(1 - (playingAmbiencesIndex / 10));
+                        Howler.volume(1 - (playingAmbiencesIndex / 10) * 1.2);
+                        console.log("Volume: " + Howler.volume());
                     }
                     
                 }
