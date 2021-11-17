@@ -385,24 +385,26 @@
                         // store button ID and play() ID in arrays
                         console.log("Playing " + ambienceID);
 
-                        playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
                         console.log("playingAmbiencesButtonIDs [" + playingAmbiencesIndex + ", " + ambienceID + " ]");
+                        playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
 
                         playingAmbiencesPlayIDs[playingAmbiencesIndex] = ambiencesHolder[ambienceID].play();
                         
+                        console.log("Increasing index and lowering volume...");
                         playingAmbiencesIndex++;
-                        console.log("Increasing index...");
+                        Howler.volume(1 - (playingAmbiencesIndex / 10));
                     }
 
                     else if (clickedAmbienceIsPlaying == true) {
-                        // fade clicked ambience
-                        // remove from array of playing ambiences array
+                        // TODO: fade clicked ambience
+                        // remove from array of playing ambiences
                         console.log("Searching for " + ambienceID);
                         ambiencesHolder[ambienceID].stop(playingAmbiencesPlayIDs[stopIndex]);
                         playingAmbiencesPlayIDs.splice(stopIndex, 1);
                         playingAmbiencesButtonIDs.splice(stopIndex, 1);
                         clickedAmbienceIsPlaying = false;
                         playingAmbiencesIndex--;
+                        Howler.volume(1 - (playingAmbiencesIndex / 10));
                     }
                     
                 }
