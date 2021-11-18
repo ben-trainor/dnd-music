@@ -4,7 +4,7 @@
 
 ## Dependencies
 - HowlerJS
-- Bootstrap v5.1<br><br>
+- Bootstrap v5.0<br><br>
 ## Pages
 - ***Index***
   - Main soundboard
