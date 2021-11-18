@@ -55,6 +55,9 @@ h1, h2, h3, h4, h5, h6 {
 
     /* Text-shadow colors */
 
+    .text-sh-white {
+        text-shadow: 2px 2px 0px #ffffff;
+    }
     .text-sh-dark {
         text-shadow: 2px 2px 0px #202020;
     }
@@ -69,6 +72,23 @@ h1, h2, h3, h4, h5, h6 {
     }
     .text-sh-second-dark {
         text-shadow: 2px 2px 0px #aa4343;
+    }
+
+    /* Background gradients */
+
+    .bg-gradient-main {
+        background: rgb(79,110,140);
+        background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
+    }
+
+    .bg-gradient-second {
+        background: rgb(170,67,67);
+        background: linear-gradient(0deg, rgba(170,67,67,1) 0%, rgba(238,101,101,1) 100%);
+    }
+
+    .bg-gradient-dark {
+        background: rgb(36,36,36);
+        background: linear-gradient(0deg, rgba(36,36,36,1) 0%, rgba(71,71,71,1) 100%);
     }
 
 
@@ -98,6 +118,13 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: scroll;
 }
 
+.roll-group {
+    background: rgb(79,110,140);
+    background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
+}
+
+    
+
 /* Alerts */
 
 .alert {
@@ -121,24 +148,6 @@ button.navbar-toggler:focus {
     box-shadow: none;
 }
 
-
-/* Bootstrap switch colors */
-
-.form-check-input:focus {
-    box-shadow: 0px 0px 4px 1px rgba(170, 67, 67, 0.459);
-}
-
-.form-check-input:checked, .form-check-input:active {
-    background-color: #ee6565;
-    border-color: #ee6565;
-}
-
-.form-check-input:focus:not(:checked) {
-    border-color: lightgrey;
-    fill: #202020;
-    fill-opacity: 1;
-    box-shadow: none;
-}
 
 /* Sliders */
 
@@ -225,11 +234,6 @@ button.navbar-toggler:focus {
     margin-top: 2px;
 }
 
-.roll-group {
-    background: rgb(79,110,140);
-    background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
-}
-    
 
 /* Buttons */
 
@@ -251,13 +255,13 @@ button.navbar-toggler:focus {
 
     /* Roll buttons */
 
-    .roll-button > img {
+    .roll-button img {
         width: 45px;
         border-radius: 30px;
     }
 
-    .roll-button:hover > img {
-        filter: invert(.3);
+    .roll-button:hover img {
+        filter: invert(.27);
     }
 
 
