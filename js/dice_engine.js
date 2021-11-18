@@ -1,5 +1,5 @@
 
-window.onload = function() {
+window.onload = function () {
 
 
     const TIMEOUT = 1200;
@@ -7,7 +7,7 @@ window.onload = function() {
 
     var rolling = false;
     var rollNumber = 0;
-    
+
     var rollButtonElements = document.getElementsByClassName("roll-button");
     var rollButtonIDs = Array;
 
@@ -34,7 +34,7 @@ window.onload = function() {
     // Generate onclick events for each button with class "roll-button"
     function setButtons() {
         for (let i = 0; i < rollButtonElements.length; i++) {
-            rollButtonElements.item(i).addEventListener("click", function() {
+            rollButtonElements.item(i).addEventListener("click", function () {
                 tryToRoll(this.id);
             });
         }
@@ -52,14 +52,14 @@ window.onload = function() {
     }
 
     function roll(rollID) {
-        
+
         rolling = true;
         clearTimeout(alertID);
-        
+
         console.log("Rolling a D" + rollID);
         document.getElementById(rollID).append(rollingMsg);
         document.getElementById(rollID).append(spinner);
-        
+
         dieImage = document.getElementById(rollID).firstElementChild;
         dieImage.className = "vibrate-1 die-icon float-start ms-1 me-2";
 
@@ -85,7 +85,7 @@ window.onload = function() {
 
         alertID = setTimeout(() => {
             alert.remove();
-        }, TIMEOUT*3);
+        }, TIMEOUT * 3);
 
     }
 
@@ -101,9 +101,9 @@ window.onload = function() {
     // MULTIROLLING
 
     var multiRollButton = document.getElementById("multi_roll_button");
-    multiRollButton.addEventListener("click", function() {tryToMultiRoll();});
+    multiRollButton.addEventListener("click", function () { tryToMultiRoll(); });
     var multiRollResetButton = document.getElementById("multi_roll_reset");
-    multiRollResetButton.addEventListener("click", function() {resetMultiRollForm();});
+    multiRollResetButton.addEventListener("click", function () { resetMultiRollForm(); });
 
     var multiRollSelects = document.getElementsByClassName("form-select");
     var multiRollSelectsIDs = Array;
@@ -119,8 +119,8 @@ window.onload = function() {
     storeMultiButtons();
     function storeMultiButtons() {
         console.log("Found " + multiRollSelects.length + " selects.")
-        for (let i = 0; i <  multiRollSelects.length; i++) {
-            multiRollSelectsIDs[i] =  multiRollSelects.item(i).id.toString();
+        for (let i = 0; i < multiRollSelects.length; i++) {
+            multiRollSelectsIDs[i] = multiRollSelects.item(i).id.toString();
             // console.log("Storing " + multiRollSelects.item(i).id);
             // console.log("Index " + i + " contains " + multiRollSelectsIDs[i]);
         }
@@ -132,30 +132,30 @@ window.onload = function() {
         for (let i = 0; i < multiRollSelects.length; i++) {
             multiRollSelectsSum += multiRollSelects.item(i).options.selectedIndex;
         }
-        
+
         if (multiRolling == true) {
             console.log("Still rolling...");
         }
-        else if(multiRollSelectsSum == 0) {
+        else if (multiRollSelectsSum == 0) {
             document.getElementById("full_page").append(alert); // display score
             alert.innerHTML = "You didn't roll any dice!";
             alertID = setTimeout(() => {
                 alert.remove();
-            }, TIMEOUT*3);
+            }, TIMEOUT * 3);
         }
         else {
             multiRoll();
         }
     }
-    
+
     function multiRoll() {
 
         multiRolling = true;
         clearTimeout(alertID);
-        
+
         document.getElementById("multi_roll_button").innerHTML = "";
         document.getElementById("multi_roll_button").append(multiRollSpinner);
-        
+
 
         for (let i = 0; i < multiRollSelects.length; i++) {
 
@@ -231,14 +231,14 @@ window.onload = function() {
 
         alertID = setTimeout(() => {
             alert.remove();
-        }, TIMEOUT*3);
-        
+        }, TIMEOUT * 3);
+
     }
-    
+
     function resetMultiRollForm() {
         for (let i = 0; i < multiRollSelects.length; i++) {
             multiRollSelects.item(i).options.selectedIndex = 0;
         }
     }
-    
+
 }
