@@ -74,6 +74,27 @@ h1, h2, h3, h4, h5, h6 {
         text-shadow: 2px 2px 0px #aa4343;
     }
 
+    /* Box-shadow colors */
+
+    .box-sh-white, .box-sh-white:focus {
+        box-shadow: 2px 2px 0px #ffffff;
+    }
+    .box-sh-dark, .box-sh-dark:focus {
+        box-shadow: 2px 2px 0px #202020;
+    }
+    .box-sh-main, .box-sh-main:focus {
+        box-shadow: 2px 2px 0px #AADEF3;
+    }
+    .box-sh-main-dark, .box-sh-main-dark:focus {
+        box-shadow: 2px 2px 0px #4F6E8C;
+    }
+    .box-sh-second, .box-sh-second:focus {
+        box-shadow: 2px 2px 0px #ee6565;
+    }
+    .box-sh-second-dark, .box-sh-second-dark:focus {
+        box-shadow: 2px 2px 0px #aa4343;
+    }
+
     /* Background gradients */
 
     .bg-gradient-main {
@@ -142,10 +163,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-toggler-icon {
     fill: white;
-}
-
-button.navbar-toggler:focus {
-    box-shadow: none;
 }
 
 
