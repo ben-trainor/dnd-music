@@ -10,6 +10,7 @@
         <!-- Bootstrap CSS v5.0.2 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/dice_animation.css">
         <script id="dice_rolling_engine" src="js/dice_engine.js"></script>
         
     </head>
@@ -76,33 +77,97 @@
                 </div>
 
 
-                <div class="row  m-0 p-0">
+                <div class="row m-0 p-0">
 
-                    <ul class="row list-group-flush roll-group text-start m-0 px-xl-3 py-xl-3 py-3 p-3 gap-xl-3 gap-3 rounded">
-                        <button id="4" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
-                            <img class="float-start ms-1 me-2" src="img/dice/d4.png" alt="D4">
-                            <p class="d-block float-start mt-2">D4</p>
-                        </button>
-                        <button id="6" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
-                            <img class="float-start ms-1 me-2" src="img/dice/d6.png" alt="D6">
-                            <p class="d-block float-start mt-2">D6</p>
-                        </button>
-                        <button id="8" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
-                            <img class="float-start ms-1 me-2" src="img/dice/d8.png" alt="D8">
-                            <p class="d-block float-start mt-2">D8</p>
-                        </button>
-                        <button id="10" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
-                            <img class="float-start ms-1 me-2" src="img/dice/d10.png" alt="D10">
-                            <p class="d-block float-start mt-2">D10</p>
-                        </button>
-                        <button id="12" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
-                            <img class="float-start ms-1 me-2" src="img/dice/d12.png" alt="D12">
-                            <p class="d-block float-start mt-2">D12</p>
-                        </button>
-                        <button id="20" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
-                            <img class="float-start ms-1 me-2" src="img/dice/d20.png" alt="D20">
-                            <p class="d-block float-start mt-2">D20</p>
-                        </button>
+                    <ul class="row m-0 p-0 roll-group rounded">
+
+                        <div class="row col-8 list-group-flush text-start m-0 px-xl-3 py-xl-3 py-3 p-3 gap-xl-3 gap-3">
+
+                            <button id="4" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                                <img class=".shake-bottom float-start ms-1 me-2" src="img/dice/d4.png" alt="D4">
+                                <p class="d-block float-start mt-2">D4</p>
+                            </button>
+                            <button id="6" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                                <img class=".shake-bottom float-start ms-1 me-2" src="img/dice/d6.png" alt="D6">
+                                <p class="d-block float-start mt-2">D6</p>
+                            </button>
+                            <button id="8" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                                <img class=".shake-bottom float-start ms-1 me-2" src="img/dice/d8.png" alt="D8">
+                                <p class="d-block float-start mt-2">D8</p>
+                            </button>
+                            <button id="10" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                                <img class=".shake-bottom float-start ms-1 me-2" src="img/dice/d10.png" alt="D10">
+                                <p class="d-block float-start mt-2">D10</p>
+                            </button>
+                            <button id="12" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                                <img class=".shake-bottom float-start ms-1 me-2" src="img/dice/d12.png" alt="D12">
+                                <p class="d-block float-start mt-2">D12</p>
+                            </button>
+                            <button id="20" class="list-group-item list-group-item-action roll-button fw-bold fs-5 p-3 pt-4 pb- border-1 rounded">
+                                <img class=".shake-bottom float-start ms-1 me-2" src="img/dice/d20.png" alt="D20">
+                                <p class="d-block float-start mt-2">D20</p>
+                            </button>
+                            
+                        </div>
+
+                        <div class="col-4 m-0 p-3 ps-0">
+
+                            <div class="row g-3 text-light text-start p-3 m-0 align-items-center bg-gradient-dark rounded">
+
+                                <h2 class="fs-4 text-light fw-bold mb-0 mt-2 text-center">Choose your combo:</h2>
+
+                                <div class="col-6">
+                                    <label for="d4s" class="col-form-label fw-bold fs-5">D4s</label>
+                                </div>
+
+                                <div class="col-6">
+                                    <input type="text" id="d4s" class="form-control" name="d4s">
+                                </div>
+                                <div class="col-6">
+                                    <label for="d6s" class="col-form-label fw-bold fs-5">D6s</label>
+                                </div>
+
+                                <div class="col-6">
+                                    <input type="text" id="d6s" class="form-control" name="d6s">
+                                </div>
+                                <div class="col-6">
+                                    <label for="d8s" class="col-form-label fw-bold fs-5">D8s</label>
+                                </div>
+
+                                <div class="col-6">
+                                    <input type="text" id="d8s" class="form-control" name="d8s">
+                                </div>
+                                <div class="col-6">
+                                    <label for="d10s" class="col-form-label fw-bold fs-5">D10s</label>
+                                </div>
+
+                                <div class="col-6">
+                                    <input type="text" id="d10s" class="form-control" name="d0s">
+                                </div>
+                                <div class="col-6">
+                                    <label for="d12s" class="col-form-label fw-bold fs-5">D12s</label>
+                                </div>
+
+                                <div class="col-6">
+                                    <input type="text" id="d12s" class="form-control" name="d2s">
+                                </div>
+                                <div class="col-6">
+                                    <label for="d20s" class="col-form-label fw-bold fs-5">D20s</label>
+                                </div>
+
+                                <div class="col-6">
+                                    <input type="text" id="d20s" class="form-control" name="d0s">
+                                </div>
+
+                                <div class="col-12 pt-4"></div>
+                                <div class="col-md-3"></div>
+
+                                <button type="submit" class="col-md-6 btn btn-lg btn-light mb-3" name="roll">ROLL</button>
+
+                            </div>
+
+                        </div>
+                        
                     </ul>
                     
                 </div>

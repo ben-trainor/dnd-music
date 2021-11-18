@@ -11,6 +11,8 @@ window.onload = function() {
     var rollButtonElements = document.getElementsByClassName("roll-button");
     var rollButtonIDs = Array;
 
+    var dieImage = "";
+
     var alert = document.createElement('div');
     alert.className = "alert alert-warning alert-dismissible fade show position-absolute shadow text-center top-0 left-50 mt-3 p-3";
     var rollingMsg = document.createElement('div');
@@ -57,6 +59,9 @@ window.onload = function() {
         console.log("Rolling a D" + rollID);
         document.getElementById(rollID).append(rollingMsg);
         document.getElementById(rollID).append(spinner);
+        
+        dieImage = document.getElementById(rollID).firstElementChild;
+        dieImage.className = "vibrate-1 die-icon float-start ms-1 me-2";
 
         setTimeout(() => {
             document.getElementById("full_page").append(alert);
@@ -73,6 +78,8 @@ window.onload = function() {
             spinner.remove();
 
             rolling = false;
+
+            dieImage.className = "die-icon float-start ms-1 me-2";
 
         }, TIMEOUT);
 
