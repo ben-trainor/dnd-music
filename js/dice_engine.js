@@ -4,6 +4,8 @@ window.onload = function () {
 
     const TIMEOUT = 1200;
     var alertID = "";
+    var rollPrepend = "";
+    var rollHistory = document.getElementById("roll_history_content");
 
     var rolling = false;
     var rollNumber = 0;
@@ -68,11 +70,13 @@ window.onload = function () {
             rollNumber = getRandomIntInclusive(1, rollID);
 
             if (rollNumber == 20) {
-                alert.innerHTML = "Rolled a nat 20!";
+                alert.innerHTML = "Nat 20!";
             }
             else {
-                alert.innerHTML = "Rolled " + rollNumber;
+                alert.innerHTML = "D" + rollID + ": " + rollNumber;
             }
+
+            appendRollHistory();
 
             rollingMsg.remove();
             spinner.remove();
@@ -87,6 +91,13 @@ window.onload = function () {
             alert.remove();
         }, TIMEOUT * 3);
 
+    }
+
+
+    function appendRollHistory() {
+        rollPrepend = document.createElement("p");
+        rollPrepend.innerHTML = alert.innerHTML;
+        rollHistory.prepend(rollPrepend);
     }
 
     function getRandomIntInclusive(min, max) {
@@ -118,11 +129,8 @@ window.onload = function () {
 
     storeMultiButtons();
     function storeMultiButtons() {
-        console.log("Found " + multiRollSelects.length + " selects.")
         for (let i = 0; i < multiRollSelects.length; i++) {
             multiRollSelectsIDs[i] = multiRollSelects.item(i).id.toString();
-            // console.log("Storing " + multiRollSelects.item(i).id);
-            // console.log("Index " + i + " contains " + multiRollSelectsIDs[i]);
         }
     }
 
@@ -220,6 +228,7 @@ window.onload = function () {
             multiRollCountString += "= " + multiRollCount; // add equals and sum to end of multicount string
             alert.innerHTML = multiRollCountString;
             document.getElementById("full_page").append(alert); // display score
+            appendRollHistory();
 
             document.getElementById("multi_roll_button").innerHTML = "ROLL"; // reset button text
             multiRollSpinner.remove(); // remove spinner

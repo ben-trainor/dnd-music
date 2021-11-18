@@ -139,10 +139,6 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
 }
 
-#round_bottom_please {
-    
-}
-
 
 /* Alerts */
 
@@ -162,6 +158,38 @@ h1, h2, h3, h4, h5, h6 {
 .navbar-toggler-icon {
     fill: white;
 }
+
+    /* Roll history */
+
+    #roll_history svg {
+        height: 30px;
+        fill: white;
+    }
+
+    #roll_history_content p:nth-of-type(2) {
+        color: rgb(0, 0, 0);
+    }
+    #roll_history_content p:nth-of-type(3) {
+        color: rgb(39, 39, 39);
+    }
+    #roll_history_content p:nth-of-type(4) {
+        color: rgb(75, 75, 75);
+    }
+    #roll_history_content p:nth-of-type(5) {
+        color: rgb(111, 111, 111);
+    }
+    #roll_history_content p:nth-of-type(6) {
+        color: rgb(147, 147, 147);
+    }
+    #roll_history_content p:nth-of-type(7) {
+        color: rgb(183, 183, 183);
+    }
+    #roll_history_content p:nth-of-type(8) {
+        color: rgb(219, 219, 219);
+    }
+    #roll_history_content p:nth-of-type(n+9) {
+        display: none;
+    }
 
 
 /* Sliders */
