@@ -107,6 +107,7 @@ window.onload = function() {
 
     var multiRollSelects = document.getElementsByClassName("form-select");
     var multiRollSelectsIDs = Array;
+    var multiRollSelectsSum = 0;
     var currentSelectItem = "";
     var multiRolling = false;
     var multiRollCount = 0;
@@ -126,8 +127,21 @@ window.onload = function() {
     }
 
     function tryToMultiRoll() {
+
+        multiRollSelectsSum = 0;
+        for (let i = 0; i < multiRollSelects.length; i++) {
+            multiRollSelectsSum += multiRollSelects.item(i).options.selectedIndex;
+        }
+        
         if (multiRolling == true) {
             console.log("Still rolling...");
+        }
+        else if(multiRollSelectsSum == 0) {
+            document.getElementById("full_page").append(alert); // display score
+            alert.innerHTML = "You didn't roll any dice!";
+            alertID = setTimeout(() => {
+                alert.remove();
+            }, TIMEOUT*3);
         }
         else {
             multiRoll();
