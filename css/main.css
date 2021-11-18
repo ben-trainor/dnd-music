@@ -1,9 +1,4 @@
 
-/* @font-face {
-    font-family: "Raleway";
-    src: url(../fonts/Raleway/Raleway-VariableFont_wght.ttf);
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Podkova:wght@400;500;600;700;800&display=swap');
 html, body, head {
     font-family: "Outfit";
@@ -144,7 +139,10 @@ h1, h2, h3, h4, h5, h6 {
     background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
 }
 
+#round_bottom_please {
     
+}
+
 
 /* Alerts */
 
@@ -301,6 +299,12 @@ h1, h2, h3, h4, h5, h6 {
 
     .multi-roll .btn#multi_roll_reset:hover, .multi-roll .btn#multi_roll_reset:focus {
         background-color: rgb(102, 78, 25);
+    }
+
+    /* Accordion buttons */
+
+    .accordion-item button.accordion-button:active, .accordion-item button.accordion-button:focus {
+        box-shadow: 0;
     }
 
 
