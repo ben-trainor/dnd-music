@@ -94,6 +94,129 @@ window.onload = function() {
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
+
+
+
+
+    // MULTIROLLING
+
+    var multiRollButton = document.getElementById("multi_roll_button");
+    multiRollButton.addEventListener("click", function() {tryToMultiRoll();});
+    var multiRollSelects = document.getElementsByClassName("form-select");
+    var multiRollSelectsIDs = Array;
+    var currentSelectItem = "";
+    var multiRolling = false;
+    var multiRollCount = 0;
+    var multiRollCountString = "";
+    var multiRollSingleCount = 0;
+    var multiRollSpinner = document.createElement('div');
+    multiRollSpinner.className = "spinner-border multi-roll-spinner fs-5 ms-0 mb-0 p-0 text-white";
+
+    storeMultiButtons();
+    function storeMultiButtons() {
+        console.log("Found " + multiRollSelects.length + " selects.")
+        for (let i = 0; i <  multiRollSelects.length; i++) {
+            multiRollSelectsIDs[i] =  multiRollSelects.item(i).id.toString();
+            // console.log("Storing " + multiRollSelects.item(i).id);
+            // console.log("Index " + i + " contains " + multiRollSelectsIDs[i]);
+        }
+    }
+
+    function tryToMultiRoll() {
+        if (multiRolling == true) {
+            console.log("Still rolling...");
+        }
+        else {
+            multiRoll();
+        }
+    }
+    
+    function multiRoll() {
+
+        multiRolling = true;
+        clearTimeout(alertID);
+        
+        document.getElementById("multi_roll_button").innerHTML = "";
+        document.getElementById("multi_roll_button").append(multiRollSpinner);
+        
+
+        for (let i = 0; i < multiRollSelects.length; i++) {
+
+            currentSelectItem = multiRollSelects.item(i);
+
+            switch (multiRollSelectsIDs[i]) {
+                case "d4s":
+                    for (let j = 0; j < currentSelectItem.options.selectedIndex; j++) {
+                        multiRollSingleCount = getRandomIntInclusive(1, 4);
+                        multiRollCount += multiRollSingleCount;
+                        multiRollCountString += multiRollSingleCount + " + ";
+                    }
+                    break;
+
+                case "d6s":
+                    for (let j = 0; j < currentSelectItem.options.selectedIndex; j++) {
+                        multiRollSingleCount = getRandomIntInclusive(1, 6);
+                        multiRollCount += multiRollSingleCount;
+                        multiRollCountString += multiRollSingleCount + " + ";
+                    }
+                    break;
+
+                case "d8s":
+                    for (let j = 0; j < currentSelectItem.options.selectedIndex; j++) {
+                        multiRollSingleCount = getRandomIntInclusive(1, 8);
+                        multiRollCount += multiRollSingleCount;
+                        multiRollCountString += multiRollSingleCount + " + ";
+                    }
+                    break;
+
+                case "d10s":
+                    for (let j = 0; j < currentSelectItem.options.selectedIndex; j++) {
+                        multiRollSingleCount = getRandomIntInclusive(1, 10);
+                        multiRollCount += multiRollSingleCount;
+                        multiRollCountString += multiRollSingleCount + " + ";
+                    }
+                    break;
+
+                case "d12s":
+                    for (let j = 0; j < currentSelectItem.options.selectedIndex; j++) {
+                        multiRollSingleCount = getRandomIntInclusive(1, 12);
+                        multiRollCount += multiRollSingleCount;
+                        multiRollCountString += multiRollSingleCount + " + ";
+                    }
+                    break;
+
+                case "d20s":
+                    for (let j = 0; j < currentSelectItem.options.selectedIndex; j++) {
+                        multiRollSingleCount = getRandomIntInclusive(1, 20);
+                        multiRollCount += multiRollSingleCount;
+                        multiRollCountString += multiRollSingleCount + " + ";
+                    }
+                    break;
+
+            }
+
+        }
+
+        setTimeout(() => {
+
+            multiRollCountString = multiRollCountString.slice(0, multiRollCountString.length - 2); // remove the last + symbol
+            multiRollCountString += "= " + multiRollCount; // add equals and sum to end of multicount string
+            alert.innerHTML = multiRollCountString;
+            document.getElementById("full_page").append(alert); // display score
+
+            document.getElementById("multi_roll_button").innerHTML = "ROLL"; // reset button text
+            multiRollSpinner.remove(); // remove spinner
+            multiRolling = false; // update state
+            multiRollCount = 0; // reset sum
+            multiRollCountString = ""; // reset multicount string
+
+        }, TIMEOUT);
+
+        alertID = setTimeout(() => {
+            alert.remove();
+        }, TIMEOUT*3);
+        
+    }
     
     
 }

@@ -234,6 +234,12 @@ button.navbar-toggler:focus {
     margin-top: 2px;
 }
 
+.multi-roll-spinner {
+    height: 20px;
+    width: 20px;
+    margin-top: 5px;
+}
+
 
 /* Buttons */
 
@@ -262,6 +268,14 @@ button.navbar-toggler:focus {
 
     .roll-button:hover img {
         filter: invert(.27);
+    }
+    
+    .multi-roll button {
+        background-color: #ee6565;
+    }
+
+    .multi-roll button:hover {
+        background-color: #aa4343;
     }
 
 
