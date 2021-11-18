@@ -274,8 +274,16 @@ button.navbar-toggler:focus {
         background-color: #ee6565;
     }
 
-    .multi-roll button:hover {
+    .multi-roll button:hover, .multi-roll button:focus {
         background-color: #aa4343;
+    }
+
+    .multi-roll .btn#multi_roll_reset {
+        background-color: #a5783d;
+    }
+
+    .multi-roll .btn#multi_roll_reset:hover, .multi-roll .btn#multi_roll_reset:focus {
+        background-color: rgb(102, 78, 25);
     }
 
 

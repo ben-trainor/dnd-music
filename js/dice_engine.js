@@ -102,6 +102,9 @@ window.onload = function() {
 
     var multiRollButton = document.getElementById("multi_roll_button");
     multiRollButton.addEventListener("click", function() {tryToMultiRoll();});
+    var multiRollResetButton = document.getElementById("multi_roll_reset");
+    multiRollResetButton.addEventListener("click", function() {resetMultiRollForm();});
+
     var multiRollSelects = document.getElementsByClassName("form-select");
     var multiRollSelectsIDs = Array;
     var currentSelectItem = "";
@@ -218,5 +221,10 @@ window.onload = function() {
         
     }
     
+    function resetMultiRollForm() {
+        for (let i = 0; i < multiRollSelects.length; i++) {
+            multiRollSelects.item(i).options.selectedIndex = 0;
+        }
+    }
     
 }
