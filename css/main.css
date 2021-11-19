@@ -342,18 +342,48 @@ h1, h2, h3, h4, h5, h6 {
     }
 
 
-/* Social media icons */
+/* Icons */
 
-.social-icon {
-    filter: invert(1);
-    width: 60px;
-    border-radius: 100%;
-    transition-duration: .2s;
-}
+    /* Music categories */
 
-.social-icon:hover {
-    background-color: #119a9a;
-}
+    .music-icon {
+        width: 3vw;
+        display: inline;
+    }
+    #battle_icon {
+        width: 2vw;
+    }
+    @media only screen and (max-width: 1200px) {
+        .music-icon {
+            width: 4vw;
+            display: inline;
+        }
+        #battle_icon {
+            width: 3.5vw;
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .music-icon {
+            width: 5vw;
+            display: inline;
+        }
+        #battle_icon {
+            width: 3.5vw;
+        }
+    }
+
+    /* Social media */
+
+    .social-icon {
+        filter: invert(1);
+        width: 60px;
+        border-radius: 100%;
+        transition-duration: .2s;
+    }
+
+    .social-icon:hover {
+        background-color: #119a9a;
+    }
 
 /* Database */
 
