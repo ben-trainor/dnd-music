@@ -337,8 +337,25 @@ h1, h2, h3, h4, h5, h6 {
 
     /* Accordion buttons */
 
-    .accordion-item button.accordion-button:active, .accordion-item button.accordion-button:focus {
-        box-shadow: 0;
+    .accordion > .accordion-item > .accordion-header > .accordion-button,
+    .accordion > .accordion-item > .accordion-header > .accordion-button:focus,
+    .accordion > .accordion-item > .accordion-header > .accordion-button.show:focus {
+        color: #aa4343;
+        box-shadow: none;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid rgb(228, 228, 228);
+    }
+
+    .accordion > .accordion-item > .accordion-header > .accordion-button.collapsed:not(:focus),
+    .accordion > .accordion-item > .accordion-header > .accordion-button.collapsed {
+        color: black;
+        box-shadow: none;
+        background-color: #f7f7f7;
+        border-bottom: 1px solid rgb(228, 228, 228);
+    }
+
+    .accordion > .accordion-item > .accordion-header > .accordion-button::after { /* change fill='%23000000' to change color */
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
     }
 
 
