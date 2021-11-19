@@ -6,6 +6,7 @@ window.onload = function () {
     var alertID = "";
     var rollPrepend = "";
     var rollHistory = document.getElementById("roll_history_content");
+    var newLine = document.createElement("br");
 
     var rolling = false;
     var rollNumber = 0;
@@ -225,8 +226,7 @@ window.onload = function () {
         setTimeout(() => {
 
             multiRollCountString = multiRollCountString.slice(0, multiRollCountString.length - 2); // remove the last + symbol
-            multiRollCountString += "= " + multiRollCount; // add equals and sum to end of multicount string
-            alert.innerHTML = multiRollCountString;
+            alert.innerHTML = multiRollCountString + "<br />" + "= " + multiRollCount;
             document.getElementById("full_page").append(alert); // display score
             appendRollHistory();
 
