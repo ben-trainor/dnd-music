@@ -8,6 +8,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+/* Code used to hide scrollbars (from: https://stackoverflow.com/questions/16670931/hide-scroll-bar-but-while-still-being-able-to-scroll) */
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+
 /* 
 
     Colors 
