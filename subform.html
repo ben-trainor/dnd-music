@@ -2,7 +2,7 @@
 <html lang="en">
 
     <head>
-        <title>About this project</title>
+        <title>Submit feedback</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,31 +64,52 @@
             
         <div class="row text-center bg-dark m-0 p-0">
 
-            <div class="col-xl-2 col-1"></div>
+            <div class="col-md-1 col-12"></div>
             
-            <!-- Ambience -->
-            <div class="col-xl-8 col-10 text-dark p-0 m-0 gap-0 single-container">
+            <div class="col-md-10 col-12 text-dark p-0 py-5 m-0 single-container">
                 
-                <div class="row m-0 mb-md-5 mb-3 p-0 pb-5"></div>
-
+                <div class="m-0 p-4 pb-md-5 pb-2">
                     
-                <h1 class="text-sh text-light text-sh-main-dark p-4 mb-3">ABOUT THIS PROJECT</h1>
-                <p class="fs-4 text-light">
-                    This started as a little fun idea to make DnD soundtracks feel more like an adaptive video game audio experience.
-                    Building a custom dynamic audio engine, sampling a variety of key background noises, and writing original scores,
-                    this became a really feasible idea and an outlet for my programming and composition passions.
-                </p>
-                <p class="fs-4 text-light">
-                    I talked to a bunch of people about the idea and got lots of feedback and ideas for key functions.
-                    I was going to put it off until I had free time, but my web design final project
-                    was pretty open-ended, so I took the opportunity to make it way more complicated than it had to be.
-                </p>
-                <p class="fs-5 text-light fst-italic mt-4 mb-0">Created by Ben Trainor</p>
-                <div class="justify-content-center social-links m-0 mt-2">
-                    <a class="p-1" href="#"><img class="social-icon p-1" src="img/iconmonstr-spotify-4-240.png" alt="Spotify"></a>
-                    <a class="p-1" href="#"><img class="social-icon p-1" src="img/iconmonstr-twitter-4-240.png" alt="Twitter"></a>
-                    <a class="p-1" href="#"><img class="social-icon p-1" src="img/iconmonstr-youtube-9-240.png" alt="YouTube"></a>
+                    <h1 class="text-sh text-light text-sh-second-dark p-4 mb-md-3 mb-0">SUBMIT FEEDBACK</h1>
+
+                    <form class="text-light text-start m-0 p-1" action="https://www.uu.edu/forms/WBFeedbackAction.cfm" method="post">
+
+                        <!-- Hidden fields -->
+                        <fieldset>
+                            <legend hidden>Hidden fieldset</legend>
+                            <input type="hidden" name="Email" value="ben.trainor@my.uu.edu">
+                            <input type="hidden" name="Website" value="dnd-music">
+                        </fieldset>
+
+                        <!-- Shown fields -->
+                       <fieldset class="container-fluid col-xl-6 col-lg-8 col-md-10">                            
+                            <label class="form-label fs-4" for="UserName">Name</label>
+                            <input class="form-control p-3 mb-3 needs_validation" type="text" maxlength="50" placeholder="Xx_MLGn0sc0p3r_xX" id="UserName" name="UserName" required>
+
+                            <label class="form-label fs-4" for="UserEmail">Email</label>
+                            <input class="form-control p-3 mb-3 needs_validation" type="email" maxlength="50" placeholder="name@example.biz" id="UserEmail" name="UserEmail" required>
+
+                            <label class="form-label fs-4" for="SubmissionType">Submission type</label>
+                            <select class="form-select p-3 mb-3" name="SubmissionType" id="SubmissionType">
+                                <option>Bug report</option>
+                                <option>Feature request</option>
+                                <option>Other</option>
+                            </select>
+
+                            <label class="form-label fs-4" for="UserComments">Comments</label>
+                            <textarea class="form-control p-3 mb-3 needs_validation" name="UserComments" id="UserComments" rows="10" maxlength="230" placeholder="Suggest features, report bugs, or just say hi!" required></textarea>
+                            
+                            <div class="row m-0 mt-4 p-0">
+                                <div class="col-4 m-0 p-0"></div>
+                                <button type="submit" class="col-4 btn btn-lg btn-main px-4 py-3 text-light fw-bold m-0 p-0">Submit</button>
+                            </div>
+                       </fieldset>
+
+                        
+                    </form>
+                    
                 </div>
+
             </div>
 
         </div>

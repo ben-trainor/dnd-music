@@ -64,6 +64,28 @@ html {
         color: #aa4343;
     }
 
+
+    /* Link colors */
+
+    a, a:visited {
+        text-decoration: none;
+        transition: .2s;
+    }
+
+    .link-main, .link-main:visited {
+        color: #AADEF3;
+    }
+    .link-main:hover, .link-main:active {
+        color: #4F6E8C;
+    }
+    .link-second, .link-second:visited {
+        color: #ee6565;
+    }
+    .link-second:hover, .link-second:active {
+        color: #aa4343;
+    }
+
+    
     /* Text-shadow colors */
 
     .text-sh-white {
@@ -374,6 +396,16 @@ html {
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
     }
 
+    /* Submit button */
+
+    .btn-main {
+        background-color: #c75252;
+    }
+
+    .btn-main:hover, .btn-main:focus {
+        background-color: #973b3b;
+    }
+
 
 /* Icons */
 
@@ -425,3 +457,18 @@ html {
     .tag {
         background-color: lightgrey;
     }
+
+
+/* Forms */
+
+input.needs_validation:focus:valid, textarea.needs_validation:focus:valid {
+    border: 2px solid green;
+    color: green;
+    background: linear-gradient(90deg, rgb(253, 253, 253) 32%, rgba(89,219,105,0.34637605042016806) 100%);
+}
+
+input.needs_validation:focus:invalid, textarea.needs_validation:focus:invalid {
+    border: 2px solid rgb(189, 62, 62);
+    color: rgb(180, 32, 32);
+    background: linear-gradient(90deg, rgb(253, 253, 253) 32%, rgba(255,102,102,0.34637605042016806) 100%);
+}
