@@ -78,11 +78,23 @@ html {
     .link-main:hover, .link-main:active {
         color: #4F6E8C;
     }
+    .link-main-dark, .link-main-dark:visited {
+        color: #145e7e;
+    }
+    .link-main-dark:hover, .link-main-dark:active {
+        color: #093547;
+    }
     .link-second, .link-second:visited {
         color: #ee6565;
     }
     .link-second:hover, .link-second:active {
         color: #aa4343;
+    }
+    .link-second-dark, .link-second-dark:visited {
+        color: #9c3f3f;
+    }
+    .link-second-dark:hover, .link-second-dark:active {
+        color: #662a2a;
     }
 
     
@@ -455,7 +467,7 @@ html {
     /* Tags */
 
     .tag {
-        background-color: lightgrey;
+        background-color: rgb(238, 238, 238);
     }
 
 

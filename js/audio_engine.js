@@ -18,7 +18,7 @@ window.onload = function() { // Have to wait for page to load before running any
     // Initialize song objects and store them in the parent object
     var howlerObjectsHolder = {
         soft_piano: soft_piano = new Howl({
-                src: ['../audio/demo/soft_piano.mp3'],
+                src: ['../audio/demo/loop_soft_piano.ogg'],
                 onplay: function() {
                     console.log("Fading in...");
                     // soft_piano.fade(0, 1, FADELENGTH);
@@ -217,15 +217,20 @@ window.onload = function() { // Have to wait for page to load before running any
             // Store song instance ID and object to be passed
             currentSong.id_play = howlerObj.play();
             currentSong.obj_play = howlerObj;
+            // currentSong.obj_play.fade(0, 1, FADELENGTH - 1);
 
             songIsPlaying = true;
         }
 
         // Crossfade between tracks if a song is playing already
         else {
+
+            // TODO: check if id of song clicked is id of current song
+            
             songIsCrossfading = true;
             crossFade(howlerObj);
             songIsCrossfading = false;
+
         }
 
         // Artificially wait to hide the loading spinner
