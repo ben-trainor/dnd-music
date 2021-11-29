@@ -17,11 +17,11 @@ window.onload = function() { // Have to wait for page to load before running any
 
     // Initialize song objects and store them in the parent object
     var howlerObjectsHolder = {
-        pizza: pizza = new Howl({
-                src: ['../audio/music/1 in the end, we all became pizza and ate ourselves.mp3'],
+        soft_piano: soft_piano = new Howl({
+                src: ['../audio/demo/soft_piano.mp3'],
                 onplay: function() {
                     console.log("Fading in...");
-                    pizza.fade(0, 1, FADELENGTH);
+                    // soft_piano.fade(0, 1, FADELENGTH);
                 },
                 loop: true
             }),
@@ -247,7 +247,8 @@ window.onload = function() { // Have to wait for page to load before running any
         currentSong.id_fade = currentSong.id_play;
         currentSong.obj_play = howlerObj;
         currentSong.id_play = howlerObj.play();
-
+        
+        currentSong.obj_play.fade(0, 1, FADELENGTH);
         currentSong.obj_fade.fade(1, 0, FADELENGTH);
         
         // Wait until after fade to stop previous song
