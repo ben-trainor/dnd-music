@@ -1,7 +1,6 @@
 # dnd-music
 *A basic web-based service for a custom adaptive audio experience.*<br><br>
-
-
+*Note: Does not include audio from final product.*
 ## Dependencies
 - HowlerJS
 - Bootstrap v5.0<br><br>
