@@ -63,6 +63,10 @@ html {
     .text-second-dark {
         color: #aa4343;
     }
+    .blur {
+        color: #4d4d4d;
+        filter: blur(1px);
+    }
 
 
     /* Link colors */
