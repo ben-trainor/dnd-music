@@ -125,16 +125,26 @@ window.onload = function() { // Have to wait for page to load before running any
 
             // Fade out audio
             currentSong.obj_play.fade(1, 0, FADELENGTH);
-            // Remove song from playing
-            currentSong.song_playing = "";
 
             setTimeout(() => {
+
                 console.log("Done stopping.");
                 currentSong.obj_play.stop(currentSong.id_play);
                 spinner.remove();
                 alert.remove();
+
+                // Clear currentSong object
+                currentSong.obj_play = "";
+                currentSong.id_play = "";
+                currentSong.obj_fade = "";
+                currentSong.id_fade = "";
+                currentSong.song_playing = "";
+
+                
                 loading = false;
                 noSongYet = true;
+                songIsPlaying = false;
+
             }, TIMEOUT);
 
         }
@@ -176,9 +186,9 @@ window.onload = function() { // Have to wait for page to load before running any
                 currentSong.id_play = howlerObj.play();
                 currentSong.obj_play = howlerObj;
                 currentSong.song_playing = id;
-                // currentSong.obj_play.fade(0, 1, FADELENGTH - 1);
+                console.log("Current song: " + id);
+                currentSong.obj_play.fade(0, 1, 20);
     
-                songIsPlaying = true;
             }
     
             // Crossfade between tracks if a song is playing already
@@ -198,6 +208,8 @@ window.onload = function() { // Have to wait for page to load before running any
                 loading = false;
             }, TIMEOUT);
 
+            songIsPlaying = true;
+
         }
 
     }
@@ -212,6 +224,7 @@ window.onload = function() { // Have to wait for page to load before running any
         currentSong.obj_play = howlerObj;
         currentSong.id_play = howlerObj.play();
         currentSong.song_playing = id;
+        console.log("Current song: " + id);
         
         currentSong.obj_play.fade(0, 1, FADELENGTH);
         currentSong.obj_fade.fade(1, 0, FADELENGTH);
@@ -240,24 +253,10 @@ window.onload = function() { // Have to wait for page to load before running any
     // used for fire crackling, forest sounds, rain, etc...
 
     var ambiencesHolder = {
-        campfire: campfire = new Howl({
-                src: ['../audio/demo/ambience/ambience_fire_crackling.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // campfire.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .5
-            }),
-        babbling_brook: babbling_brook = new Howl({
-                src: ['../audio/demo/ambience/ambience_babbling_brook.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // babbling_brook.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .2
-            }),
+
+        // THE TOWN
+
+        // THE WOODS
         daytime: daytime = new Howl({
                 src: ['../audio/demo/ambience/ambience_forest_day.wav'],
                 onplay: function() {
@@ -276,6 +275,15 @@ window.onload = function() { // Have to wait for page to load before running any
                 loop: true,
                 volume: .5
             }),
+        campfire: campfire = new Howl({
+                src: ['../audio/demo/ambience/ambience_fire_crackling.wav'],
+                onplay: function() {
+                    console.log("Fading in...");
+                    // campfire.fade(0, 1, FADELENGTH);
+                },
+                loop: true,
+                volume: .5
+            }),
         rain: rain = new Howl({
                 src: ['../audio/demo/ambience/ambience_rain.wav'],
                 onplay: function() {
@@ -284,7 +292,32 @@ window.onload = function() { // Have to wait for page to load before running any
                 },
                 loop: true,
                 volume: .5
-            })         
+            }),
+
+        // THE WATER
+        babbling_brook: babbling_brook = new Howl({
+                src: ['../audio/demo/ambience/ambience_babbling_brook.wav'],
+                onplay: function() {
+                    console.log("Fading in...");
+                    // babbling_brook.fade(0, 1, FADELENGTH);
+                },
+                loop: true,
+                volume: .2
+            }),
+        ocean_shore: ocean_shore = new Howl({
+                src: ['../audio/demo/ambience/ambience_ocean_shore.wav'],
+                onplay: function() {
+                    console.log("Fading in...");
+                    // ocean_shore.fade(0, 1, FADELENGTH);
+                },
+                loop: true,
+                volume: .2
+            })    
+
+        // THE CAVE
+
+        // THE MONSTERS
+        
     }
 
 
