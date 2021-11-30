@@ -18,18 +18,18 @@ window.onload = function() { // Have to wait for page to load before running any
     // Initialize song objects and store them in the parent object
     var howlerObjectsHolder = {
         soft_piano: soft_piano = new Howl({
-                src: ['../audio/demo/loop_soft_piano.ogg'],
+                src: ['../audio/demo/exports/loop_soft_piano.ogg'],
                 onplay: function() {
                     console.log("Fading in...");
                     // soft_piano.fade(0, 1, FADELENGTH);
                 },
                 loop: true
             }),
-        paul: paul = new Howl({
-                src: ['../audio/music/2 yeah no paul looks like this.mp3'],
+        town_outside: town_outside = new Howl({
+                src: ['../audio/demo/exports/loop_town(outside).ogg'],
                 onplay: function() {
                     console.log("Fading in...");
-                    paul.fade(0, 1, FADELENGTH);
+                    // town_outside.fade(0, 1, FADELENGTH);
                 },
                 loop: true
             }),
@@ -280,20 +280,20 @@ window.onload = function() { // Have to wait for page to load before running any
     // used for fire crackling, forest sounds, rain, etc...
 
     var ambiencesHolder = {
-        fire_crackling1: fire_crackling1 = new Howl({
-                src: ['../audio/music/1 in the end, we all became pizza and ate ourselves.mp3'],
+        campfire: campfire = new Howl({
+                src: ['../audio/demo/ambience/ambience_fire_crackling.wav'],
                 onplay: function() {
                     console.log("Fading in...");
-                    fire_crackling1.fade(0, 1, FADELENGTH);
+                    // campfire.fade(0, 1, FADELENGTH);
                 },
                 loop: true,
                 volume: .5
             }),
-        fire_crackling2: fire_crackling2 = new Howl({
-                src: ['../audio/music/2 yeah no paul looks like this.mp3'],
+        babbling_brook: babbling_brook = new Howl({
+                src: ['../audio/demo/ambience/ambience_babbling_brook.wav'],
                 onplay: function() {
                     console.log("Fading in...");
-                    fire_crackling2.fade(0, 1, FADELENGTH);
+                    // babbling_brook.fade(0, 1, FADELENGTH);
                 },
                 loop: true,
                 volume: .5
@@ -381,6 +381,7 @@ window.onload = function() { // Have to wait for page to load before running any
             playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
 
             playingAmbiencesPlayIDs[playingAmbiencesIndex] = ambiencesHolder[ambienceID].play();
+            ambiencesHolder[ambienceID].fade(0, 1, FADELENGTH);
             
             // console.log("Increasing index and lowering volume...");
             playingAmbiencesIndex++;
