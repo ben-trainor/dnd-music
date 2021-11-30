@@ -18,74 +18,19 @@ window.onload = function() { // Have to wait for page to load before running any
     // Initialize song objects and store them in the parent object
     var howlerObjectsHolder = {
         soft_piano: soft_piano = new Howl({
-                src: ['../audio/demo/exports/loop_soft_piano.ogg'],
+                src: ['../audio/demo/music/loop_soft_piano.ogg'],
                 onplay: function() {
                     console.log("Fading in...");
                     // soft_piano.fade(0, 1, FADELENGTH);
                 },
+                volume: .6,
                 loop: true
             }),
         town_outside: town_outside = new Howl({
-                src: ['../audio/demo/exports/loop_town(outside).ogg'],
+                src: ['../audio/demo/music/loop_town_outside.ogg'],
                 onplay: function() {
                     console.log("Fading in...");
-                    // town_outside.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        tasting: tasting = new Howl({
-                src: ['../audio/music/3 tasting flowers.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    tasting.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        hours: hours = new Howl({
-                src: ['../audio/music/4 only mark the bright hours.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    hours.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        igloo: igloo = new Howl({
-                src: ['../audio/music/5 an igloo, perhaps.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    igloo.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        willow: willow = new Howl({
-                src: ['../audio/music/6 wandering willow.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    willow.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        sun: sun = new Howl({
-                src: ['../audio/music/7 we haven\'t seen the sun for three days.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    sun.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        happenings: happenings = new Howl({
-                src: ['../audio/music/8 places, things, and happenings.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    happenings.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            }),
-        noise: noise = new Howl({
-                src: ['../audio/sfx/noise.mp3'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    noise.fade(0, 1, FADELENGTH);
+                    // adventuring.fade(0, 1, FADELENGTH);
                 },
                 loop: true
             })
@@ -100,7 +45,8 @@ window.onload = function() { // Have to wait for page to load before running any
         obj_play: "",
         obj_fade: "",
         id_play: "",
-        id_fade: ""
+        id_fade: "",
+        song_playing: ""
     };
     var loading = false;
     var songIsPlaying = false;
@@ -179,6 +125,8 @@ window.onload = function() { // Have to wait for page to load before running any
 
             // Fade out audio
             currentSong.obj_play.fade(1, 0, FADELENGTH);
+            // Remove song from playing
+            currentSong.song_playing = "";
 
             setTimeout(() => {
                 console.log("Done stopping.");
@@ -202,49 +150,60 @@ window.onload = function() { // Have to wait for page to load before running any
     // Attempt to start playing song when triggered
     function tryToPlay(howlerObj, id) {
 
-        loading = true;
-
-        // Add spinner to clicked button
-        var spinner = document.createElement('div');
-        spinner.className = "spinner-border float-end";
-        var currentButton = document.getElementById(id);
-        currentButton.append(spinner);
-
-        // Start song and music mode if page is silent
-        if (songIsPlaying == false) {
-            console.log("Starting music...");
-
-            // Store song instance ID and object to be passed
-            currentSong.id_play = howlerObj.play();
-            currentSong.obj_play = howlerObj;
-            // currentSong.obj_play.fade(0, 1, FADELENGTH - 1);
-
-            songIsPlaying = true;
+        if (id == currentSong.song_playing) {
+            alert.innerHTML = "This song is already playing!";
+            document.getElementById("full_page").append(alert);
+            setTimeout(() => {
+                alert.remove();
+            }, TIMEOUT);
         }
 
-        // Crossfade between tracks if a song is playing already
         else {
 
-            // TODO: check if id of song clicked is id of current song
-            
-            songIsCrossfading = true;
-            crossFade(howlerObj);
-            songIsCrossfading = false;
+            loading = true;
+
+            // Add spinner to clicked button
+            var spinner = document.createElement('div');
+            spinner.className = "spinner-border float-end";
+            var currentButton = document.getElementById(id);
+            currentButton.append(spinner);
+    
+            // Start song and music mode if page is silent
+            if (songIsPlaying == false) {
+                console.log("Starting music...");
+    
+                // Store song instance ID and object to be passed
+                currentSong.id_play = howlerObj.play();
+                currentSong.obj_play = howlerObj;
+                currentSong.song_playing = id;
+                // currentSong.obj_play.fade(0, 1, FADELENGTH - 1);
+    
+                songIsPlaying = true;
+            }
+    
+            // Crossfade between tracks if a song is playing already
+            else {
+    
+                songIsCrossfading = true;
+                crossFade(howlerObj, id);
+                songIsCrossfading = false;
+    
+            }
+    
+            // Artificially wait to hide the loading spinner
+            setTimeout(() => {
+                console.log("Done loading.");
+                spinner.remove();
+                alert.remove();
+                loading = false;
+            }, TIMEOUT);
 
         }
-
-        // Artificially wait to hide the loading spinner
-        setTimeout(() => {
-            console.log("Done loading.");
-            spinner.remove();
-            alert.remove();
-            loading = false;
-        }, TIMEOUT);
 
     }
     
     // Fade out currently playing song
-    function crossFade(howlerObj) {
+    function crossFade(howlerObj, id) {
 
         console.log("Crossfading...");
 
@@ -252,6 +211,7 @@ window.onload = function() { // Have to wait for page to load before running any
         currentSong.id_fade = currentSong.id_play;
         currentSong.obj_play = howlerObj;
         currentSong.id_play = howlerObj.play();
+        currentSong.song_playing = id;
         
         currentSong.obj_play.fade(0, 1, FADELENGTH);
         currentSong.obj_fade.fade(1, 0, FADELENGTH);
@@ -259,7 +219,7 @@ window.onload = function() { // Have to wait for page to load before running any
         // Wait until after fade to stop previous song
         setTimeout(() => {
             console.log("Done fading. Stopping previous song...");
-            currentSong.obj_fade.stop(currentSong.id_fade);
+            currentSong.obj_fade.pause(currentSong.id_fade);
         }, TIMEOUT);
 
         if (songIsCrossfading == true) {
@@ -296,31 +256,31 @@ window.onload = function() { // Have to wait for page to load before running any
                     // babbling_brook.fade(0, 1, FADELENGTH);
                 },
                 loop: true,
-                volume: .5
+                volume: .2
             }),
-        fire_crackling3: fire_crackling3 = new Howl({
-                src: ['../audio/music/3 tasting flowers.mp3'],
+        daytime: daytime = new Howl({
+                src: ['../audio/demo/ambience/ambience_forest_day.wav'],
                 onplay: function() {
                     console.log("Fading in...");
-                    fire_crackling3.fade(0, 1, FADELENGTH);
+                    // daytime.fade(0, 1, FADELENGTH);
                 },
                 loop: true,
                 volume: .5
             }),
-        fire_crackling4: fire_crackling4 = new Howl({
-                src: ['../audio/music/4 only mark the bright hours.mp3'],
+        nighttime: nighttime = new Howl({
+                src: ['../audio/demo/ambience/ambience_forest_night.wav'],
                 onplay: function() {
                     console.log("Fading in...");
-                    fire_crackling4.fade(0, 1, FADELENGTH);
+                    // nighttime.fade(0, 1, FADELENGTH);
                 },
                 loop: true,
                 volume: .5
             }),
-        fire_crackling5: fire_crackling5 = new Howl({
-                src: ['../audio/sfx/noise.mp3'],
+        rain: rain = new Howl({
+                src: ['../audio/demo/ambience/ambience_rain.wav'],
                 onplay: function() {
                     console.log("Fading in...");
-                    fire_crackling5.fade(0, 1, FADELENGTH);
+                    // rain.fade(0, 1, FADELENGTH);
                 },
                 loop: true,
                 volume: .5
