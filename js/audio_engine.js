@@ -65,7 +65,7 @@ window.onload = function() { // Have to wait for page to load before running any
     alert.className = "alert alert-warning alert-dismissible fade show position-absolute shadow text-center top-0 left-50 mt-3 p-3";
     var play_icon = document.createElement('img');
     play_icon.src = '../img/audio-spectrum-svgrepo-com.svg';
-    play_icon.classList = "play-icon float-end m-0 p-0"
+    play_icon.classList = "play-icon float-end m-0 p-0";
 
     storeButtonSongs();
     setButtonSongs();
@@ -143,6 +143,7 @@ window.onload = function() { // Have to wait for page to load before running any
                 currentSong.obj_play.stop(currentSong.id_play);
                 spinner.remove();
                 alert.remove();
+                play_icon.remove();
 
                 // Clear currentSong object
                 currentSong.obj_play = "";
