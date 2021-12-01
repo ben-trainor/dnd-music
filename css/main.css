@@ -351,6 +351,10 @@ html {
         min-height: 90px;
     }
 
+    .play-icon {
+        height: 25px;
+    }
+
     /* Success buttons */
 
     .btn-success {

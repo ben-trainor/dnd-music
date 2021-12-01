@@ -54,7 +54,7 @@ window.onload = function() { // Have to wait for page to load before running any
         obj_fade: "",
         id_play: "",
         id_fade: "",
-        song_playing: ""
+        button_playing: ""
     };
     var loading = false;
     var songIsPlaying = false;
@@ -63,6 +63,9 @@ window.onload = function() { // Have to wait for page to load before running any
 
     var alert = document.createElement('div');
     alert.className = "alert alert-warning alert-dismissible fade show position-absolute shadow text-center top-0 left-50 mt-3 p-3";
+    var play_icon = document.createElement('img');
+    play_icon.src = '../img/audio-spectrum-svgrepo-com.svg';
+    play_icon.classList = "play-icon float-end m-0 p-0"
 
     storeButtonSongs();
     setButtonSongs();
@@ -146,7 +149,7 @@ window.onload = function() { // Have to wait for page to load before running any
                 currentSong.id_play = "";
                 currentSong.obj_fade = "";
                 currentSong.id_fade = "";
-                currentSong.song_playing = "";
+                currentSong.button_playing = "";
 
                 
                 loading = false;
@@ -168,7 +171,7 @@ window.onload = function() { // Have to wait for page to load before running any
     // Attempt to start playing song when triggered
     function tryToPlay(howlerObj, id) {
 
-        if (id == currentSong.song_playing) {
+        if (id == currentSong.button_playing) {
             alert.innerHTML = "This song is already playing!";
             document.getElementById("full_page").append(alert);
             setTimeout(() => {
@@ -180,12 +183,15 @@ window.onload = function() { // Have to wait for page to load before running any
 
             loading = true;
 
+            // Remove spinner from previous button
+
             // Add spinner to clicked button
             var spinner = document.createElement('div');
             spinner.className = "spinner-border float-end";
             var currentButton = document.getElementById(id);
             currentButton.append(spinner);
     
+
             // Start song and music mode if page is silent
             if (songIsPlaying == false) {
                 console.log("Starting music...");
@@ -193,7 +199,7 @@ window.onload = function() { // Have to wait for page to load before running any
                 // Store song instance ID and object to be passed
                 currentSong.id_play = howlerObj.play();
                 currentSong.obj_play = howlerObj;
-                currentSong.song_playing = id;
+                currentSong.button_playing = id;
                 console.log("Current song: " + id);
                 currentSong.obj_play.fade(0, 1, 20);
     
@@ -214,6 +220,8 @@ window.onload = function() { // Have to wait for page to load before running any
                 spinner.remove();
                 alert.remove();
                 loading = false;
+                // Add audio icon to button
+                currentButton.append(play_icon);
             }, TIMEOUT);
 
             songIsPlaying = true;
@@ -231,7 +239,7 @@ window.onload = function() { // Have to wait for page to load before running any
         currentSong.id_fade = currentSong.id_play;
         currentSong.obj_play = howlerObj;
         currentSong.id_play = howlerObj.play();
-        currentSong.song_playing = id;
+        currentSong.button_playing = id;
         console.log("Current song: " + id);
         
         currentSong.obj_play.fade(0, 1, FADELENGTH);
