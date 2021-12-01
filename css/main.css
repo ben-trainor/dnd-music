@@ -436,7 +436,7 @@ html {
     }
     @media only screen and (max-width: 1200px) {
         .music-icon {
-            width: 4vw;
+            width: 4.5vw;
             display: inline;
         }
         #battle_icon {
@@ -445,7 +445,7 @@ html {
     }
     @media only screen and (max-width: 768px) {
         .music-icon {
-            width: 5vw;
+            width: 7vw;
             display: inline;
         }
         #battle_icon {

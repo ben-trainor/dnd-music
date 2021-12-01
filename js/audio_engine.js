@@ -4,6 +4,7 @@ window.onload = function() { // Have to wait for page to load before running any
 
     const FADELENGTH = 2000;
     const TIMEOUT = FADELENGTH + 50;
+    var AMBIENCE_VOLUME = .15;
 
 
 
@@ -18,22 +19,21 @@ window.onload = function() { // Have to wait for page to load before running any
     // Initialize song objects and store them in the parent object
     var howlerObjectsHolder = {
         soft_piano: soft_piano = new Howl({
-                src: ['../audio/demo/music/loop_soft_piano.ogg'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // soft_piano.fade(0, 1, FADELENGTH);
-                },
-                volume: .6,
-                loop: true
-            }),
+            src: ['../audio/demo/music/loop_soft_piano.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            volume: 1,
+            loop: true
+        }),
         town_outside: town_outside = new Howl({
-                src: ['../audio/demo/music/loop_town_outside.ogg'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // adventuring.fade(0, 1, FADELENGTH);
-                },
-                loop: true
-            })
+            src: ['../audio/demo/music/loop_town_outside.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            volume: 1,
+            loop: true
+        })
     }
 
     
@@ -256,67 +256,75 @@ window.onload = function() { // Have to wait for page to load before running any
 
         // THE TOWN
 
+
         // THE WOODS
         daytime: daytime = new Howl({
-                src: ['../audio/demo/ambience/ambience_forest_day.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // daytime.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .5
-            }),
+            src: ['../audio/demo/ambience/ambience_forest_day.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
         nighttime: nighttime = new Howl({
-                src: ['../audio/demo/ambience/ambience_forest_night.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // nighttime.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .5
-            }),
+            src: ['../audio/demo/ambience/ambience_forest_night.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
         campfire: campfire = new Howl({
-                src: ['../audio/demo/ambience/ambience_fire_crackling.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // campfire.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .5
-            }),
+            src: ['../audio/demo/ambience/ambience_fire_crackling.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
         rain: rain = new Howl({
-                src: ['../audio/demo/ambience/ambience_rain.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // rain.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .5
-            }),
+            src: ['../audio/demo/ambience/ambience_rain.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
+
 
         // THE WATER
         babbling_brook: babbling_brook = new Howl({
-                src: ['../audio/demo/ambience/ambience_babbling_brook.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // babbling_brook.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .2
-            }),
+            src: ['../audio/demo/ambience/ambience_babbling_brook.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
         ocean_shore: ocean_shore = new Howl({
-                src: ['../audio/demo/ambience/ambience_ocean_shore.wav'],
-                onplay: function() {
-                    console.log("Fading in...");
-                    // ocean_shore.fade(0, 1, FADELENGTH);
-                },
-                loop: true,
-                volume: .2
-            })    
+            src: ['../audio/demo/ambience/ambience_ocean_shore.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
+        waterfall: waterfall = new Howl({
+            src: ['../audio/demo/ambience/ambience_waterfall.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        }),
+        boat_rocking: boat_rocking = new Howl({
+            src: ['../audio/demo/ambience/ambience_boat_rocking.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            loop: true
+        })
+            
 
         // THE CAVE
 
+
         // THE MONSTERS
+
+        
         
     }
 
@@ -374,7 +382,7 @@ window.onload = function() { // Have to wait for page to load before running any
             playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
 
             playingAmbiencesPlayIDs[playingAmbiencesIndex] = ambiencesHolder[ambienceID].play();
-            ambiencesHolder[ambienceID].fade(0, 1, FADELENGTH);
+            ambiencesHolder[ambienceID].fade(0, AMBIENCE_VOLUME, FADELENGTH);
             
             // console.log("Increasing index and lowering volume...");
             playingAmbiencesIndex++;
