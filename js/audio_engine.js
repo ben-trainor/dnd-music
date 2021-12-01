@@ -21,7 +21,7 @@ window.onload = function() { // Have to wait for page to load before running any
         soft_piano: soft_piano = new Howl({
             src: ['../audio/demo/music/loop_soft_piano.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             volume: 1,
             loop: true
@@ -29,7 +29,7 @@ window.onload = function() { // Have to wait for page to load before running any
         town_outside: town_outside = new Howl({
             src: ['../audio/demo/music/loop_town_outside.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             volume: 1,
             loop: true
@@ -37,7 +37,7 @@ window.onload = function() { // Have to wait for page to load before running any
         soft_harp: soft_harp = new Howl({
             src: ['../audio/demo/music/loop_soft_harp.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             volume: 1,
             loop: true
@@ -48,7 +48,6 @@ window.onload = function() { // Have to wait for page to load before running any
     // Make a collection of all the buttons with the "music-button" class
     var musicButtons =  document.getElementsByClassName("music-button");
     var songIDs = Array; // Note: JavaScript Arrays are mutable
-    var defaultSong;
     var currentSong = {
         obj_play: "",
         obj_fade: "",
@@ -184,8 +183,6 @@ window.onload = function() { // Have to wait for page to load before running any
 
             loading = true;
 
-            // Remove spinner from previous button
-
             // Add spinner to clicked button
             var spinner = document.createElement('div');
             spinner.className = "spinner-border float-end";
@@ -278,28 +275,28 @@ window.onload = function() { // Have to wait for page to load before running any
         daytime: daytime = new Howl({
             src: ['../audio/demo/ambience/ambience_forest_day.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
         nighttime: nighttime = new Howl({
             src: ['../audio/demo/ambience/ambience_forest_night.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
         campfire: campfire = new Howl({
             src: ['../audio/demo/ambience/ambience_fire_crackling.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
         rain: rain = new Howl({
             src: ['../audio/demo/ambience/ambience_rain.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
@@ -309,28 +306,28 @@ window.onload = function() { // Have to wait for page to load before running any
         babbling_brook: babbling_brook = new Howl({
             src: ['../audio/demo/ambience/ambience_babbling_brook.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
         ocean_shore: ocean_shore = new Howl({
             src: ['../audio/demo/ambience/ambience_ocean_shore.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
         waterfall: waterfall = new Howl({
             src: ['../audio/demo/ambience/ambience_waterfall.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         }),
         boat_rocking: boat_rocking = new Howl({
             src: ['../audio/demo/ambience/ambience_boat_rocking.wav'],
             onplay: function() {
-                console.log("Fading in...");
+                // console.log("Fading in...");
             },
             loop: true
         })
@@ -353,6 +350,8 @@ window.onload = function() { // Have to wait for page to load before running any
     var stopIndex = "";
     var playingAmbiencesButtonIDs = [""];
     var playingAmbiencesPlayIDs = [""];
+    var ambienceGroup = "";
+    var ambienceClassName = "";
 
     var clickedAmbienceIsPlaying = false;
 
@@ -369,7 +368,7 @@ window.onload = function() { // Have to wait for page to load before running any
     function setAmbiences() {
         for (let i = 0; i < ambienceButtons.length; i++) {
             ambienceButtons.item(i).addEventListener("click", function() {
-                ambienceLogic(this.id);
+                ambienceLogic(this.id, this.className);
             });
         }
     }
@@ -390,10 +389,22 @@ window.onload = function() { // Have to wait for page to load before running any
             }
         }
         
+        // TURN AMBIENCE ON
         if (clickedAmbienceIsPlaying == false) {
+
             // play clicked ambience
             // store button ID and play() ID in arrays
-            console.log("Playing " + ambienceID);
+            // console.log("Playing " + ambienceID);
+
+            // Add icon to accordion group if nothing is playing
+            if (isAmbienceGroupPlaying(ambienceID) == false) {
+                console.log("Adding play icon to " + ambienceClassName);
+                // This is silly but it works /shrug
+                document.getElementById(ambienceClassName)
+                    .previousElementSibling.firstElementChild.firstElementChild
+                    .nextElementSibling.nextElementSibling.className
+                    = "play-icon position-absolute float-end me-3 m-0 p-0 d-block";
+            }
 
             // console.log("playingAmbiencesButtonIDs [" + playingAmbiencesIndex + ", " + ambienceID + " ]");
             playingAmbiencesButtonIDs[playingAmbiencesIndex] = ambienceID;
@@ -404,10 +415,13 @@ window.onload = function() { // Have to wait for page to load before running any
             // console.log("Increasing index and lowering volume...");
             playingAmbiencesIndex++;
             Howler.volume(1 - (playingAmbiencesIndex / 10));
-            console.log("Volume: " + Howler.volume());
+            // console.log("Volume: " + Howler.volume());
+
         }
 
+        // TURN AMBIENCE OFF
         else if (clickedAmbienceIsPlaying == true) {
+
             // TODO: fade clicked ambience
             // remove from array of playing ambiences
             // console.log("Searching for " + ambienceID);
@@ -417,9 +431,44 @@ window.onload = function() { // Have to wait for page to load before running any
             clickedAmbienceIsPlaying = false;
             playingAmbiencesIndex--;
             Howler.volume(1 - (playingAmbiencesIndex / 11));
-            console.log("Volume: " + Howler.volume());
+            // console.log("Volume: " + Howler.volume());
+
+            // Remove icon from accordion group if nothing is playing
+            if (isAmbienceGroupPlaying(ambienceID) == false) {
+                console.log("Removing play icon from " + ambienceClassName);
+                // This is silly but it works /shrug
+                document.getElementById(ambienceClassName)
+                    .previousElementSibling.firstElementChild.firstElementChild
+                    .nextElementSibling.nextElementSibling.className
+                    = "play-icon position-absolute float-end me-3 m-0 p-0 d-none";
+            }
         }
         
+    }
+
+    // Check if any ambiences are playing in group
+    function isAmbienceGroupPlaying(ambienceID) {
+
+        // Parse class name of button
+        // Loop through array of id's in group, checking against id's in playingAmbiencesButtonIDs
+        ambienceClassName = document.getElementById(ambienceID).className.split(" ")[0];
+        ambienceGroup = document.getElementsByClassName(ambienceClassName);
+
+        console.log("Checking if items in " + ambienceClassName + " are playing...");
+        for (let j = 0; j < 4; j++) {
+            console.log(ambienceGroup.item(j).id);
+
+            for (let i = 0; i < playingAmbiencesButtonIDs.length; i++) {
+                if (ambienceGroup.item(j).id == playingAmbiencesButtonIDs[i]) {
+                    console.log("An ambience in the group is playing!");
+                    return true;
+                }
+            }
+
+        }
+        console.log("No ambiences in the group are playing.");
+        return false;
+
     }
 
 }

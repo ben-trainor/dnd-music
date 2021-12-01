@@ -351,10 +351,6 @@ html {
         min-height: 90px;
     }
 
-    .play-icon {
-        height: 25px;
-    }
-
     /* Success buttons */
 
     .btn-success {
@@ -438,6 +434,11 @@ html {
     #battle_icon {
         width: 2vw;
     }
+    .play-icon {
+        height: 1.5vw;
+        right: 40px;
+    }
+
     @media only screen and (max-width: 1200px) {
         .music-icon {
             width: 4.5vw;
@@ -445,6 +446,9 @@ html {
         }
         #battle_icon {
             width: 3.5vw;
+        }
+        .play-icon {
+            height: 2.6vw;
         }
     }
     @media only screen and (max-width: 768px) {
@@ -454,6 +458,9 @@ html {
         }
         #battle_icon {
             width: 3.5vw;
+        }
+        .play-icon {
+            height: 4vw;
         }
     }
 
