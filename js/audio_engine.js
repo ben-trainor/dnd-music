@@ -33,6 +33,14 @@ window.onload = function() { // Have to wait for page to load before running any
             },
             volume: 1,
             loop: true
+        }),
+        soft_harp: soft_harp = new Howl({
+            src: ['../audio/demo/music/loop_soft_harp.wav'],
+            onplay: function() {
+                console.log("Fading in...");
+            },
+            volume: 1,
+            loop: true
         })
     }
 
@@ -386,7 +394,7 @@ window.onload = function() { // Have to wait for page to load before running any
             
             // console.log("Increasing index and lowering volume...");
             playingAmbiencesIndex++;
-            Howler.volume(1 - (playingAmbiencesIndex / 10) * 1.2);
+            Howler.volume(1 - (playingAmbiencesIndex / 10));
             console.log("Volume: " + Howler.volume());
         }
 
@@ -399,7 +407,7 @@ window.onload = function() { // Have to wait for page to load before running any
             playingAmbiencesButtonIDs.splice(stopIndex, 1);
             clickedAmbienceIsPlaying = false;
             playingAmbiencesIndex--;
-            Howler.volume(1 - (playingAmbiencesIndex / 10) * 1.2);
+            Howler.volume(1 - (playingAmbiencesIndex / 11));
             console.log("Volume: " + Howler.volume());
         }
         
