@@ -198,6 +198,14 @@ html {
     background: linear-gradient(0deg, rgba(79,110,140,1) 0%, rgba(170,222,243,1) 100%);
 }
 
+article {
+    border-top: 1px dashed black;
+}
+
+article:first-of-type {
+    border: none;
+}
+
 
 /* Alerts */
 
