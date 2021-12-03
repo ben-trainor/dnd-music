@@ -402,7 +402,7 @@ window.onload = function() { // Have to wait for page to load before running any
                 // This is silly but it works /shrug
                 document.getElementById(ambienceClassName)
                     .previousElementSibling.firstElementChild.firstElementChild
-                    .nextElementSibling.nextElementSibling.className
+                    .nextElementSibling.className
                     = "play-icon position-absolute float-end me-3 m-0 p-0 d-block";
             }
 
@@ -439,7 +439,7 @@ window.onload = function() { // Have to wait for page to load before running any
                 // This is silly but it works /shrug
                 document.getElementById(ambienceClassName)
                     .previousElementSibling.firstElementChild.firstElementChild
-                    .nextElementSibling.nextElementSibling.className
+                    .nextElementSibling.className
                     = "play-icon position-absolute float-end me-3 m-0 p-0 d-none";
             }
         }
