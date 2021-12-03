@@ -440,7 +440,7 @@ article:first-of-type {
         display: inline;
     }
     #battle_icon {
-        width: 2vw;
+        width: 2.45vw;
     }
     .play-icon {
         height: 1.5vw;
@@ -453,7 +453,8 @@ article:first-of-type {
             display: inline;
         }
         #battle_icon {
-            width: 3.5vw;
+            width: 3.7vw;
+            margin-left: 3px;
         }
         .play-icon {
             height: 2.6vw;
@@ -465,7 +466,7 @@ article:first-of-type {
             display: inline;
         }
         #battle_icon {
-            width: 3.5vw;
+            width: 5.5vw;
         }
         .play-icon {
             height: 4vw;
