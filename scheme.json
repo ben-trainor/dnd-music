@@ -1,0 +1,17 @@
+{
+
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "dnd-music",
+    "creator": "Ben Trainor",
+    "applicationCategory": "Multimedia",
+        "applicationSubCategory": "Soundboard",
+    "browserRequirements": "requires HTML5 support",
+    "softwareVersion": "1.0.0",
+    "copyrightYear": "2021",
+
+    "genre": "Fantasy/Medieval",
+    "keywords": "soundboard, ambience, sound, soundtrack, audio, ambient, rain, noise, soundscape"
+    
+}
+  
