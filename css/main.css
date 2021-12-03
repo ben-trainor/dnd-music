@@ -175,9 +175,14 @@ html {
 }
 
 @media only screen and (max-width: 768px) {
+    .audio-container:first-of-type {
+        max-height: 40vh;
+        height: 40vh;
+        overflow-y: scroll;
+    }
     .audio-container {
-        max-height: 50vh;
-        height: 50vh;
+        max-height: 60vh;
+        height: 60vh;
         overflow-y: scroll;
     }
 }
