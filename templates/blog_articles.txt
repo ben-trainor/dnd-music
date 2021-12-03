@@ -1,16 +1,17 @@
 
 FIRST ARTICLE
 
-<article class="row m-0 p-0">
+<article id="TITLE_ABBREV" class="row m-0 p-0">
     <h2 class="text-main-dark m-0 p-0">TITLE</h2>
     <h3 class="text-dark fs-5 fst-italic mb-3 p-0">DATE</h3>
     <p class="fs-5 m-0 mb-3 p-0">CONTENT</p>
     <p class="fs-5 m-0 mb-3 p-0">MORE CONTENT</p>
 </article>
 
+
 SUBSEQUENT ARTICLES
 
-<article class="m-0 mt-5 p-0 pt-3">
+<article id="TITLE_ABBREV" class="m-0 mt-5 p-0 pt-3">
     <h2 class="text-main-dark m-0 p-0">TITLE</h2>
     <h3 class="text-dark fs-5 fst-italic mb-3 p-0">DATE</h3>
     <p class="fs-5 m-0 mb-3 p-0">CONTENT</p>
