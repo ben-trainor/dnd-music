@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Podkova:wght@400;500;600;700;800&display=swap');
-html, body, head {
+html, body, head, button > h2 {
     font-family: "Outfit";
 }
 h1, h2, h3, h4, h5, h6 {
