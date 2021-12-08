@@ -49,6 +49,14 @@ window.onload = function() { // Have to wait for page to load before running any
             },
             volume: 1,
             loop: true
+        }),
+        a_terrible_fate: a_terrible_fate = new Howl({
+            src: ['../audio/demo/music/loop_a_terrible_fate.wav'],
+            onplay: function() {
+                // console.log("Fading in...");
+            },
+            volume: 1,
+            loop: true
         })
     }
 
