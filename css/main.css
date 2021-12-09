@@ -168,6 +168,10 @@ html {
     z-index: 20;
 }
 
+#landing_menu {
+    margin-top: 25vh;
+}
+
 .audio-container {
     max-height: 100vh;
     height: 100vh;
