@@ -1,0 +1,9 @@
+{
+    "name": "dnd-music by ben trainor",
+    "short_name": "dnd-music",
+    "start_url": "index.html",
+    "scope": "./",
+    "theme_color": "#AADEF3",
+    "background_color": "#4F6E8C",
+    "display": "standalone"
+  }
