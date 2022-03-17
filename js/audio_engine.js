@@ -1,6 +1,8 @@
+import {Howl, Howler} from 'howler';
 
 window.onload = function() { // Have to wait for page to load before running anything
 
+    
 
     const FADELENGTH = 2000;
     const TIMEOUT = FADELENGTH + 50;
