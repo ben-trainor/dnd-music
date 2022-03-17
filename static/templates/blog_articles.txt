@@ -1,0 +1,35 @@
+
+FIRST ARTICLE
+
+<article id="TITLE_ABBREV" class="row m-0 p-0">
+    <h2 class="text-main-dark m-0 p-0">TITLE</h2>
+    <h3 class="text-dark fs-5 fst-italic mb-3 p-0">DATE</h3>
+    <p class="fs-5 m-0 mb-3 p-0">CONTENT</p>
+    <p class="fs-5 m-0 mb-3 p-0">MORE CONTENT</p>
+</article>
+
+
+SUBSEQUENT ARTICLES
+
+<article id="TITLE_ABBREV" class="m-0 mt-5 p-0 pt-3">
+    <h2 class="text-main-dark m-0 p-0">TITLE</h2>
+    <h3 class="text-dark fs-5 fst-italic mb-3 p-0">DATE</h3>
+    <p class="fs-5 m-0 mb-3 p-0">CONTENT</p>
+    <p class="fs-5 m-0 mb-3 p-0">MORE CONTENT</p>
+</article>
+
+
+VIDEOS (goes inside article tag)
+
+<div class="row m-0 mb-3 p-0">
+    <div class="col-xl-2"></div>
+    <div class="col-xl-8 m-0 p-2">
+        <h3>Video Title</h3>
+        <div class="ratio ratio-16x9 mb-2">
+            ** GRAB THIS PORTION FROM YOUTUBE'S EMBED OPTION **
+            <iframe width="500" height="200" src="URL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            ** GRAB THIS PORTION FROM YOUTUBE'S EMBED OPTION **
+        </div>
+        <p class="fst-italic m-0 p-0">Video caption</p>
+    </div>
+</div>
