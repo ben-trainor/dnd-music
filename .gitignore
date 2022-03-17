@@ -1,5 +1,5 @@
 .DS_Store
-audio/
+# audio/
 audio/demo/scores/soft piano.musx
 index.html
 js/audio_engine.js
