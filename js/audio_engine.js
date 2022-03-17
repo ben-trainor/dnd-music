@@ -1,5 +1,3 @@
-import {Howl, Howler} from 'howler';
-
 window.onload = function() { // Have to wait for page to load before running anything
 
     
