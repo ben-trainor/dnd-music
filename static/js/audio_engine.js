@@ -19,7 +19,7 @@ window.onload = function() { // Have to wait for page to load before running any
     // Initialize song objects and store them in the parent object
     var howlerObjectsHolder = {
         soft_piano: soft_piano = new Howl({
-            src: ['../static/audio/demo/music/loop_soft_piano.wav'],
+            src: ['../static/audio/music/loop_soft_piano.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
@@ -27,7 +27,7 @@ window.onload = function() { // Have to wait for page to load before running any
             loop: true
         }),
         town_outside: town_outside = new Howl({
-            src: ['../static/audio/demo/music/loop_town_outside.wav'],
+            src: ['../static/audio/music/loop_town_outside.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
@@ -35,7 +35,7 @@ window.onload = function() { // Have to wait for page to load before running any
             loop: true
         }),
         soft_harp: soft_harp = new Howl({
-            src: ['../static/audio/demo/music/loop_soft_harp.wav'],
+            src: ['../static/audio/music/loop_soft_harp.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
@@ -43,7 +43,7 @@ window.onload = function() { // Have to wait for page to load before running any
             loop: true
         }),
         phase_1: phase_1 = new Howl({
-            src: ['../static/audio/demo/music/loop_phase_1.wav'],
+            src: ['../static/audio/music/loop_phase_1.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
@@ -51,7 +51,7 @@ window.onload = function() { // Have to wait for page to load before running any
             loop: true
         }),
         a_terrible_fate: a_terrible_fate = new Howl({
-            src: ['../static/audio/demo/music/loop_a_terrible_fate.wav'],
+            src: ['../static/audio/music/loop_a_terrible_fate.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
@@ -289,28 +289,28 @@ window.onload = function() { // Have to wait for page to load before running any
 
         // THE WOODS
         daytime: daytime = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_forest_day.wav'],
+            src: ['../static/audio/ambience/ambience_forest_day.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
             loop: true
         }),
         nighttime: nighttime = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_forest_night.wav'],
+            src: ['../static/audio/ambience/ambience_forest_night.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
             loop: true
         }),
         campfire: campfire = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_fire_crackling.wav'],
+            src: ['../static/audio/ambience/ambience_fire_crackling.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
             loop: true
         }),
         rain: rain = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_rain.wav'],
+            src: ['../static/audio/ambience/ambience_rain.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
@@ -320,28 +320,28 @@ window.onload = function() { // Have to wait for page to load before running any
 
         // THE WATER
         babbling_brook: babbling_brook = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_babbling_brook.wav'],
+            src: ['../static/audio/ambience/ambience_babbling_brook.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
             loop: true
         }),
         ocean_shore: ocean_shore = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_ocean_shore.wav'],
+            src: ['../static/audio/ambience/ambience_ocean_shore.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
             loop: true
         }),
         waterfall: waterfall = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_waterfall.wav'],
+            src: ['../static/audio/ambience/ambience_waterfall.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
             loop: true
         }),
         boat_rocking: boat_rocking = new Howl({
-            src: ['../static/audio/demo/ambience/ambience_boat_rocking.wav'],
+            src: ['../static/audio/ambience/ambience_boat_rocking.wav'],
             onplay: function() {
                 // console.log("Fading in...");
             },
