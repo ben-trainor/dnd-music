@@ -7,37 +7,15 @@ window.onload = function() { // Have to wait for page to load before running any
     var AMBIENCE_VOLUME = .15;
 
 
-    // // Remove disabled placeholder buttons and temporarily disable music-buttons while loading
-    // var currentElement = document.getElementsByClassName("music-button").item(0);
-    // for (var b = 0; b < document.getElementsByClassName("music-button").length; b++) {
-
-    //     console.log(document.getElementsByClassName("music-button").length - b + " elements left to process..");
-    //     currentElement = document.getElementsByClassName("music-button").item(b);
-
-    //     if (currentElement.classList.contains("disabled")) {
-    //         console.log("Removing " + currentElement.innerHTML);
-    //         currentElement.remove();
-    //     }
-    //     else {
-    //         console.log("Disabling " + currentElement.innerHTML);
-    //         currentElement.classList.add("disabled");
-    //     }
-        
-    // }
-
-    // // Arbitrarily wait to re-enable buttons
-    // setTimeout(() => {
-    //     for (var b = 0; b < document.getElementsByClassName("music-button").length; b++) {
-    //         document.getElementsByClassName("music-button").item(b).classList.remove("disabled");
-    //     }
-    // }, 6000);
 
     document.getElementsByTagName("html").item(0).classList.add("bg-main-dark");
     document.getElementsByClassName("audio-container").item(0).classList.add("d-none");
     document.getElementsByClassName("audio-container").item(1).classList.add("d-none");
     setTimeout(() => {
-        document.getElementsByClassName("audio-container").item(0).classList.remove = "d-none";
-        document.getElementsByClassName("audio-container").item(1).classList.remove = "d-none";
+        document.getElementsByTagName("html").item(0).classList.remove("bg-main-dark");
+        document.getElementById("loading").remove();
+        document.getElementsByClassName("audio-container").item(0).classList.remove("d-none");
+        document.getElementsByClassName("audio-container").item(1).classList.remove("d-none");
     }, 6000);
 
 
