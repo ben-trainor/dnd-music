@@ -11,6 +11,8 @@ window.onload = function() { // Have to wait for page to load before running any
     var currentElement = document.getElementsByClassName("music-button").item(0);
     for (var b = 0; b < document.getElementsByClassName("music-button").length; b++) {
 
+        console.log("Disabling " + currentElement.innerHTML);
+
         currentElement = document.getElementsByClassName("music-button").item(b);
 
         if (!currentElement.classList.contains("disabled")) {
@@ -19,7 +21,9 @@ window.onload = function() { // Have to wait for page to load before running any
         else {
             currentElement.remove();
         }
+        
     }
+
     // Arbitrarily wait to re-enable buttons
     setTimeout(() => {
         for (var b = 0; b < document.getElementsByClassName("music-button").length; b++) {
