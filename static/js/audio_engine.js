@@ -7,7 +7,25 @@ window.onload = function() { // Have to wait for page to load before running any
     var AMBIENCE_VOLUME = .15;
 
 
+    // Remove disabled placeholder buttons and temporarily disable music-buttons while loading
+    var currentElement = document.getElementsByClassName("music-button").item(0);
+    for (var b = 0; b < document.getElementsByClassName("music-button").length; b++) {
 
+        currentElement = document.getElementsByClassName("music-button").item(b);
+
+        if (!currentElement.classList.contains("disabled")) {
+            currentElement.classList.add("disabled");
+        }
+        else {
+            currentElement.remove();
+        }
+    }
+    // Arbitrarily wait to re-enable buttons
+    setTimeout(() => {
+        for (var b = 0; b < document.getElementsByClassName("music-button").length; b++) {
+            document.getElementsByClassName("music-button").item(b).classList.remove("disabled");
+        }
+    }, 6000);
 
 
 
