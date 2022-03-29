@@ -168,8 +168,8 @@ html {
     z-index: 20;
 }
 
-#landing_menu {
-    margin-top: 25vh;
+.landing_menu {
+    margin-top: 20vh;
 }
 
 .audio-container {
